@@ -12,4 +12,16 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/js/slides.js', 'public/js')
+    // .js('resources/js/slides.min.js', 'public/js')
+    .js('resources/js/custom.js', 'public/js/')
+    .copy('resources/js/soundcloud.min.js', 'public/js')
+    .copy('resources/js/plugins.js', 'public/js')
+    .copy('resources/js/swiper.min.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/slides.scss', 'public/css')
+    .sass('resources/sass/custom.scss', 'public/css')
+
+if (mix.inProduction()) {
+    mix.version();
+}

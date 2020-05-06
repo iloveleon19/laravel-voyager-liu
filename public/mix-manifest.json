@@ -1,0 +1,11 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/slides.css": "/css/slides.css",
+    "/css/custom.css": "/css/custom.css",
+    "/js/custom.js": "/js/custom.js",
+    "/js/slides.js": "/js/slides.js",
+    "/js/soundcloud.min.js": "/js/soundcloud.min.js",
+    "/js/plugins.js": "/js/plugins.js",
+    "/js/swiper.min.js": "/js/swiper.min.js"
+}
