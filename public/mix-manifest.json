@@ -7,5 +7,6 @@
     "/js/slides.js": "/js/slides.js",
     "/js/soundcloud.min.js": "/js/soundcloud.min.js",
     "/js/plugins.js": "/js/plugins.js",
-    "/js/swiper.min.js": "/js/swiper.min.js"
+    "/js/swiper.min.js": "/js/swiper.min.js",
+    "/css/swiper.min.css": "/css/swiper.min.css"
 }

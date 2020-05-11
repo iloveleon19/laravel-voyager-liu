@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','劉承鑫建築事務所 - 作品')
+@section('title',$title)
 
 @section('slide')
 
@@ -8,42 +8,93 @@
 <section class="slide fade-6 kenBurns whiteSlide">
   <div class="content">
     <div class="container">
-      <div class="wrap noSpaces">
+      <div class="wrap noSpaces align-top">
+        <div class="flex">
+          <div class='col-8-12 left margin-top-10'>
 
-        <div class="margin-top-10 margin-bottom-20 ">
-          <ul class="flex fixedSpaces later">
+              <form class="slides-form wide" action="#" autocomplete="off">
+                <input type="text" class="rounded input-38" name="search" placeholder="Search"/>
+              </form>
+              <ul class="flex equal equalMobile">
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Books</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Commercial</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Cultural</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Design</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Religious</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Residential</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Exhibitions</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Competitions</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Furniture</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Photography</a></li>
+                <li class="col-12-12"><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Hotel</a></li>
+              </ul>
 
-            <li class="col-12-12 margin-bottom-8">
-              <div class="rounded empty margin-bottom-2 ae-5" style="background-image:url(assets/img/building_1.jpg); background-size:cover;background-repeat:no-repeat; height:350px;"></div>
-              <!-- <div class="rounded empty margin-bottom-2 ae-5">
-                <img src="assets/img/building_1.jpg" alt="building_1">
-              </div> -->
-              <div class="fix-7-12 space left">
-                <h3 class="ae-5">原圖</h3>
-                <div class="ae-6"><p class="tiny opacity-6">You don’t have to be “a creative” to be creative.</p></div>
-                <a class="button blue gradient ae-10 fromCenter cropLeft small" href="product-item1.html">Learn more</a>
-              </div>
-            </li>
-            <li class="col-12-12 margin-bottom-8">
-              <div class="rounded empty margin-bottom-2 ae-5" style="background-image:url(assets/img/building_2-fix.jpg); background-size:cover;background-repeat:no-repeat; height:350px;"></div>
-              <div class="fix-7-12 space left">
-                <h3 class="ae-5">裁切後圖片</h3>
-                <div class="ae-6"><p class="tiny opacity-6">You don’t have to be “a creative” to be creative.</p></div>
-                <a class="button blue gradient ae-10 fromCenter cropLeft small" href="product-item1.html">Learn more</a>
-              </div>
-            </li>
-            <li class="col-12-12 margin-bottom-8">
-              <div class="rounded empty margin-bottom-2 ae-5" style="background-image:url(assets/img/building_3.jpg); background-size:cover;background-repeat:no-repeat; height:350px;"></div>
-              <div class="fix-7-12 space left">
-                <h3 class="ae-5">原圖</h3>
-                <div class="ae-6"><p class="tiny opacity-6">You don’t have to be “a creative” to be creative.</p></div>
-                <a class="button blue gradient ae-10 fromCenter cropLeft small" href="product-item1.html">Learn more</a>
-              </div>
-            </li>
+          </div>
 
-          </ul>
+          <div class="col-4-12">
+            <ul class="flex equal equalMobile">
+
+              <li>
+                <a class="item-100" href="{{ route('menu.product.item') }}">
+                  <ul class="flex later reverse">
+                    <li class="col-2-12"></li>
+                    <li class="col-4-12 left padding-2">
+                      <h3 class="smaller margin-bottom-2 ae-1 fromLeft">Tile Collection</h1>
+                      <p class="ae-2 fromLeft">
+                        <div class="opacity-8">Teixidors</div>
+                        <div class="opacity-8">Barcelona, Spain</div>
+                        <div class="opacity-8">2018 – 2020</div>
+                      </p>
+                    </li>
+                    <li class="col-6-12 cell-28 ae-1">
+                      <img src="assets/img/watch-26-2.png" width="360" alt="iPhone Thumbnail"/>
+                    </li>
+                  </ul>
+                </a>
+              </li>
+
+              <li>
+                <a class="item-100" href="{{ route('menu.product.item') }}">
+                  <ul class="flex later reverse">
+                    <li class="col-2-12 left"></li>
+                    <li class="col-4-12 left padding-2">
+                      <h3 class="smaller margin-bottom-2 ae-1 fromLeft">Tile Collection</h1>
+                      <p class="ae-2 fromLeft">
+                        <div class="opacity-8">Teixidors</div>
+                        <div class="opacity-8">Barcelona, Spain</div>
+                        <div class="opacity-8">2018 – 2020</div>
+                      </p>
+                    </li>
+                    <li class="col-6-12 cell-28 ae-1">
+                      <img src="assets/img/watch-26-2.png" width="360" alt="iPhone Thumbnail"/>
+                    </li>
+                  </ul>
+                </a>
+              </li>
+
+              <li>
+                <a class="item-100" href="{{ route('menu.product.item') }}">
+                  <ul class="flex later reverse">
+                    <li class="col-2-12 left"></li>
+                    <li class="col-4-12 left padding-2">
+                      <h3 class="smaller margin-bottom-2 ae-1 fromLeft">Tile Collection</h1>
+                      <p class="ae-2 fromLeft">
+                        <div class="opacity-8">Teixidors</div>
+                        <div class="opacity-8">Barcelona, Spain</div>
+                        <div class="opacity-8">2018 – 2020</div>
+                      </p>
+                    </li>
+                    <li class="col-6-12 cell-28 ae-1">
+                      <img src="assets/img/watch-26-2.png" width="360" alt="iPhone Thumbnail"/>
+                    </li>
+                  </ul>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+
         </div>
-
       </div>
     </div>
   </div>

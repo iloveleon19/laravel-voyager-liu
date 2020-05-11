@@ -2844,8 +2844,15 @@
 }
 
 .productImg {
-  height: 76vh;
   width: 100%;
+  max-width: 100vw;
+  height: 80vh;
+  max-height: 100vh;
+}
+
+.main_productImg {
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .arrow-White {
@@ -2855,5 +2862,30 @@
 
 body.slides {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.photo_height {
+  height: auto;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --swiper-theme-color: #202020 !important;
 }
 

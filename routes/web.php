@@ -21,10 +21,6 @@ Route::get('/company', function () {
     return view('company');
 })->name('menu.company');
 
-Route::get('/examination', function () {
-    return view('examination');
-})->name('menu.examination');
-
 Route::get('/journal', function () {
     return view('journal');
 })->name('menu.journal');
@@ -33,9 +29,7 @@ Route::get('/product-item', function () {
     return view('product-item');
 })->name('menu.product.item');
 
-Route::get('/product', function () {
-    return view('product');
-})->name('menu.product');
+Route::get('/product','ProductController@index')->name('menu.product');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

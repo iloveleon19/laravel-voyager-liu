@@ -6,9 +6,11 @@
 
   <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/custom.css')}}" rel="stylesheet" type="text/css">
-  <script src="{{mix('/js/app.js')}}"></script>
-  <script src="{{mix('/js/slides.js')}}"></script>
-  <script src="{{mix('/js/plugins.js')}}"></script>
+  <link href="{{mix('/css/swiper.min.css')}}" rel="stylesheet" type="text/css">
+  <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
+  <script src="{{mix('/js/slides.js')}}" type="text/javascript"></script>
+  <script src="{{mix('/js/plugins.js')}}" type="text/javascript"></script>
+  <script src="{{mix('/js/swiper.min.js')}}" type="text/javascript"></script>
 
   <title>@yield('title')</title>
 </head>
@@ -84,27 +86,28 @@
 
   <nav class="panel top">
     <div class="sections">
-      <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
     </div>
   </nav>
   <!-- Sidebar -->
-  <nav class="sidebar black" data-sidebar-id="1">
-    <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-    <div class="content">
-      <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
-      <ul class="mainMenu margin-top-3">
-        <li><a href="{{ route('menu.journal') }}">journal</a></li>
-        <li><a href="{{ route('menu.product') }}">作品</a></li>
-        <li><a href="{{ route('menu.company') }}">事務所簡介</a></li>
-        <li><a href="{{ route('menu.examination') }}">工程勘驗</a></li>
-      </ul>
-      <ul class="social opacity-8">
-        <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
-        <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li> -->
-        <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
-      </ul>
-    </div>
-  </nav>
+  <div class='grid'>
+    <nav class="sidebar white left col-12-12" data-sidebar-id="1">
+      <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
+      <div class="content">
+        <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
+        <ul class="mainMenu margin-top-3 big">
+          <li><a href="{{ route('menu.journal') }}">日誌</a></li>
+          <li><a href="{{ route('menu.product') }}">作品</a></li>
+          <li><a href="{{ route('menu.company') }}">事務所簡介</a></li>
+        </ul>
+        <ul class="social opacity-8">
+          <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
+          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li> -->
+          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
+        </ul>
+      </div>
+    </nav>
+  </div>
 
   @yield('slide')
 
@@ -112,4 +115,7 @@
   <div class="progress-bar blue"></div>
 
 </body>
+
+@yield('jscode')
+
 </html>

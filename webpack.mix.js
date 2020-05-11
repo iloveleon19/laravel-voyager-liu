@@ -21,6 +21,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/slides.scss', 'public/css')
     .sass('resources/sass/custom.scss', 'public/css')
+    .copy('resources/sass/swiper.min.css', 'public/css')
 
 if (mix.inProduction()) {
     mix.version();

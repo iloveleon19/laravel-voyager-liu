@@ -7,8 +7,8 @@
 <section class="slide fade-6 kenBurns whiteSlide">
   <div class="content">
     <div class="container">
-      <div class="wrap noSpaces">
-        <div class="margin-top-10 margin-bottom-20">
+      <div class="wrap">
+        <!-- <div> -->
           <!-- 照片+簡介 -->
           <div class="fix-9-12 toCenter">
             <img class="round margin-bottom-1 ae-1 fromCenter" src="assets/img/avatar-36.jpg" alt="Avatar" width="70" data-action="zoom"/>
@@ -111,7 +111,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
