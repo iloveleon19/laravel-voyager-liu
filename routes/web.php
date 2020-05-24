@@ -13,23 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('menu.index');
+Route::get('/', 'IndexController@index')->name('menu.index');
 
-Route::get('/company', function () {
-    return view('company');
-})->name('menu.company');
+Route::get('/company', 'CompanyController@index')->name('menu.company');
 
 Route::get('/journal', function () {
     return view('journal');
 })->name('menu.journal');
 
-Route::get('/product-item', function () {
-    return view('product-item');
-})->name('menu.product.item');
-
-Route::get('/product','ProductController@index')->name('menu.product');
+Route::get('/product', 'ProductController@index')->name('menu.product');
+Route::get('/product-item/{slug}', 'ProductItemController@index')->name('menu.product.item');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

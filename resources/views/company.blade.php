@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title','劉承鑫建築事務所 - 事務所簡介')
+@section('title', $title)
 
 @section('slide')
 
@@ -11,14 +11,20 @@
         <!-- <div> -->
           <!-- 照片+簡介 -->
           <div class="fix-9-12 toCenter">
-            <img class="round margin-bottom-1 ae-1 fromCenter" src="assets/img/avatar-36.jpg" alt="Avatar" width="70" data-action="zoom"/>
-            <p class="ae-2 large margin-bottom-2"><span class="opacity-8">劉承鑫建築事務所</span></p>
+
+            @if($officeIntro->show_boss_image && $officeIntro->boss)
+              <img class="round margin-bottom-1 ae-1 fromCenter" src="{{ Voyager::image( $officeIntro->boss->photo ) }}" alt="Avatar" width="70" data-action="zoom"/>
+            @endif
+
+            <p class="ae-2 large margin-bottom-2"><span class="opacity-8">{{ $officeIntro->title }}</span></p>
             <!-- <h1 class="smaller ae-3 margin-bottom-2">劉承鑫建築事務所</h1> -->
               <div class="padding-left-2 padding-right-2">
-                <p class="ae-4 left margin-bottom-4"><span class="opacity-8">To create anything–whether a short story or a magazine profile or a film or a sitcom–is to believe, if only momentarily, you are capable of&nbsp;magic.</span></p>
-                <p class="ae-4 left margin-bottom-4"><span class="opacity-8">To create anything–whether a short story or a magazine profile or a film or a sitcom–is to believe, if only momentarily, you are capable of&nbsp;magic.</span></p>
+                <p class="ae-4 left margin-bottom-4"><span class="opacity-8">{!! $officeIntro->body !!}</span></p>
               </div>
           </div>
+
+
+          {{-- 後台文章新增圖片有問題 --}}
 
           <!-- 專利 -->
           <div class="fix-8-12 noSelect">
@@ -42,75 +48,55 @@
           </div>
 
             <!-- 合作夥伴 -->
-          <div class="fix-12-12 toCenter margin-top-5">
-            <h1 class="smaller margin-bottom-3 ae-1">合作夥伴</h1>
-            <ul class="flex fixedSpaces later">
-              <li class="col-3-12 ae-3 fromCenter">
-                <img class="round margin-bottom-3 margin-top-5" src="assets/img/avatar-26.jpg" height="128" alt="沈淑惠"/>
-                <div class="fix-3-12">
-                  <h4 class="smallest margin-bottom-1">沈淑惠</h4>
-                  <p class="left"><span class="opacity-8">It&rsquo;s very easy to be different, but very difficult to be better.</span></p>
-                </div>
-                <div class="fix-3-12 equalElement">
-                  <ul class="social-circles">
-                    <li><a class="social-mail" href="mailto:#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
-                    <li><a class="social-facebook" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
-                    <li><a class="social-instagram" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-                    <li><a class="social-twitter" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-                    <li><a class="social-googlePlus" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#googlePlus"></use></svg></a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="col-3-12 ae-4 fromCenter">
-                <img class="round margin-bottom-3 margin-top-5" src="assets/img/avatar-31.jpg" height="128" alt="陳鈺雅"/>
-                <div class="fix-3-12">
-                  <h4 class="smallest margin-bottom-1">陳鈺雅</h4>
-                  <p class="left"><span class="opacity-8">Space and light and order. Those are the things that men.</span></p>
-                </div>
-                <div class="fix-3-12 equalElement">
-                  <ul class="social-circles">
-                    <li><a class="social-mail" href="mailto:#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
-                    <li><a class="social-facebook" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
-                    <li><a class="social-instagram" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-                    <li><a class="social-twitter" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-                    <li><a class="social-googlePlus" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#googlePlus"></use></svg></a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="col-3-12 ae-5 fromCenter">
-                <img class="round margin-bottom-3 margin-top-5" src="assets/img/avatar-39.jpg" height="128" alt="吳孝尹"/>
-                <div class="fix-3-12">
-                  <h4 class="smallest margin-bottom-1">吳孝尹</h4>
-                  <p class="left"><span class="opacity-8">The proper study of mankind is the science of design.</span></p>
-                </div>
-                <div class="fix-3-12 equalElement">
-                  <ul class="social-circles">
-                    <li><a class="social-mail" href="mailto:#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
-                    <li><a class="social-facebook" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
-                    <li><a class="social-instagram" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-                    <li><a class="social-twitter" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-                    <li><a class="social-googlePlus" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#googlePlus"></use></svg></a></li>
-                  </ul>
-                </div>
-              </li>
-              <li class="col-3-12 ae-6 fromCenter">
-                <img class="round margin-bottom-3 margin-top-5" src="assets/img/avatar-48.jpg" height="128" alt="趙世傑"/>
-                <div class="fix-3-12">
-                  <h4 class="smallest margin-bottom-1">趙世傑</h4>
-                  <p class="left"><span class="opacity-8">The proper study of mankind is the science of design.</span></p>
-                </div>
-                <div class="fix-3-12 equalElement">
-                  <ul class="social-circles">
-                    <li><a class="social-mail" href="mailto:#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
-                    <li><a class="social-facebook" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
-                    <li><a class="social-instagram" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-                    <li><a class="social-twitter" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-                    <li><a class="social-googlePlus" href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#googlePlus"></use></svg></a></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
+            @if($officeIntro->show_partner)
+
+            <div class="fix-12-12 toCenter margin-top-5">
+              <h1 class="smaller margin-bottom-3 ae-1">合作夥伴</h1>
+              <ul class="flex fixedSpaces later">
+
+                @foreach($officeIntro->partner as $partner)
+                <li class="col-3-12 ae-3 fromCenter">
+  
+                  @if($officeIntro->show_partner_image)
+                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" alt="{{$partner->name}}"/>
+                  @endif
+
+                  <div class="fix-3-12">
+                    <h4 class="smallest margin-bottom-1">{{ $partner->name }}</h4>
+                    <p class="left"><span class="opacity-8">{!! $partner->intro !!}</span></p>
+                  </div>
+
+                  @if($officeIntro->show_partner_social)
+                  <div class="fix-3-12 equalElement">
+                    <ul class="social-circles">
+
+                      @if($partner->email)
+                        <li><a class="social-mail" href="mailto:{{$partner->email}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
+                      @endif
+
+                      @if($partner->facebook)
+                        <li><a class="social-facebook" href="{{$partner->facebook}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
+                      @endif
+
+                      @if($partner->instagram)
+                        <li><a class="social-instagram" href="{{$partner->instagram}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
+                      @endif
+
+                      @if($partner->twitter)
+                        <li><a class="social-twitter" href="{{$partner->twitter}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
+                      @endif
+
+                    </ul>
+                  </div>
+                  @endif
+
+                </li>
+                @endforeach
+              </ul>
+            </div>
+
+            @endif
+
         <!-- </div> -->
       </div>
     </div>

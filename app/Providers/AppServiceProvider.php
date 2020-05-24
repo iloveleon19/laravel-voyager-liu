@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use App\Observers\BannerObserver;
+use App\Observers\ProductObserver;
+use App\Observers\OfficeIntroObserver;
+use App\Banner;
+use App\Product;
+use App\OfficeIntro;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Banner::observe(BannerObserver::class);
+        Product::observe(ProductObserver::class);
+        OfficeIntro::observe(OfficeIntroObserver::class);
     }
 }

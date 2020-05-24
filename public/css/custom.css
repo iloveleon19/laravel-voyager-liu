@@ -1,3 +1,12 @@
+.social-mail {
+  background: #bf9107 !important;
+  color: #fff !important;
+}
+
+.social-mail svg {
+  fill: #fff !important;
+}
+
 .item-100.height-40 {
   height: 35vh;
 }
