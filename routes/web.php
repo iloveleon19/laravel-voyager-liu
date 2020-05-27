@@ -17,9 +17,13 @@ Route::get('/', 'IndexController@index')->name('menu.index');
 
 Route::get('/company', 'CompanyController@index')->name('menu.company');
 
-Route::get('/journal', function () {
-    return view('journal');
-})->name('menu.journal');
+    Route::get('/journal', function () {
+        return view('journal');
+    })->name('menu.journal');
+
+Route::get('/journal', 'JournalController@index')->name('menu.journal');
+Route::get('/journal-item/{slug}', 'JournalItemController@index')->name('menu.journal.item');
+
 
 Route::get('/product', 'ProductController@index')->name('menu.product');
 Route::get('/product-item/{slug}', 'ProductItemController@index')->name('menu.product.item');
