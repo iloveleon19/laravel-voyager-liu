@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
 
-  <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/custom.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/swiper.min.css')}}" rel="stylesheet" type="text/css">
+
   <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
   <script src="{{mix('/js/slides.js')}}" type="text/javascript"></script>
   <script src="{{mix('/js/plugins.js')}}" type="text/javascript"></script>
@@ -96,12 +97,7 @@
       <div class="content">
         <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
         <ul class="mainMenu margin-top-3 big">
-
-          {{-- 要加入 menu --}}
-
-          <li><a href="{{ route('menu.journal') }}">日誌</a></li>
-          <li><a href="{{ route('menu.product') }}">作品</a></li>
-          <li><a href="{{ route('menu.company') }}">事務所簡介</a></li>
+          {!! menu('front-menu','layout.menu.default') !!}
         </ul>
         <ul class="social opacity-8">
           <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>

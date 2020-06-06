@@ -9,51 +9,45 @@
   <div class="content">
     <div class="container">
       <div class="wrap noSpaces align-top">
-        <div class="flex">
 
-          <div class="col-8-12 left padding-top-10">
-            <div class="flex">
-              <div class="col-2-12">
-                <form class="slides-form wide" action="#" autocomplete="off">
-                  <input type="text" class="rounded input-38" name="search" placeholder="Search"/>
-                </form>
+        <div style="float:left;position:fixed">
 
-                <ul class="equal equalMobile">
-                  {{-- 要加入 menu 可以調整 --}}
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Books</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Commercial</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Cultural</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Design</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Religious</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Residential</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Exhibitions</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Competitions</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Furniture</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Photography</a></li>
-                  <li><a class="item-100 padding-left-3 padding-top-1 padding-bottom-1" href="">Hotel</a></li>
-                </ul>
-
-              </div>
+            <div class="fix-1-12 left" style="margin-top:60px">
+  
+              <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
+                    <input type="text" class=" input-product-search" name="search" placeholder="Search"/>
+              </form>
+  
+              <ul class="equal equalMobile">
+                  {!! menu('product_search', 'layout.menu.search') !!}
+              </ul>
             </div>
+
+        </div>
+
+
+        <div class="flex">
+          <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2">
           </div>
 
-          <div class="col-4-12">
-            <ul class="flex equal equalMobile">
+          <div class="col-4-12 col-desktop-1-2 col-tablet-3-5 col-phablet-3-4 col-phone-1-2">
+            <ul class="flex equal equalMobile margin-1">
+
               @foreach ($products as $product)
-                <li>
-                  {{-- 要用 slug 倒到作品完整頁面--}}
-                  <a class="item-100" href="{{ route('menu.product.item',['slug' => $product->slug]) }}">
+                <li class="hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
+                  {{-- 要用 slug 導到作品完整頁面 --}}
+                  <a class="item-101" href="{{ route('menu.product.item',['slug' => $product->slug]) }}">
 
                     <ul class="flex later reverse">
-                      <li class="col-2-12"></li>
-                      <li class="col-4-12 left padding-2">
-                          <h3 class="smaller margin-bottom-2 ae-1 fromLeft">{{$product->title}}</h1>
-                          <p class="ae-2 fromLeft">
-                            <div class="opacity-8">
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
+
+                          <div class="flex" style="flex-direction: column;word-wrap: break-word;">
+                            <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h1>
+                            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
                               {{$product->categories->implode('name',',')}}
                             </div>
-                            <div class="opacity-8">{{$product->location}}</div>
-                            <div class="opacity-8">
+                            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->location}}</div>
+                            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
                               @if ($product->start_year)
                                 {{$product->start_year}}
                               @endif
@@ -66,10 +60,10 @@
                                 {{$product->finish_year}}
                               @endif
                             </div>
-                          </p>
+                          </div>
                       </li>
-                      <li class="col-6-12 cell-28 ae-1">
-                        <img src="{{ Voyager::image( $product->excerpt_image ) }}" width="360" alt="{{$product->seo_title}}"/>
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
+                        <img src="{{ Voyager::image( $product->excerpt_image ) }}"  alt="{{$product->seo_title}}"/>
                       </li>
                     </ul>
                   </a>
@@ -86,4 +80,25 @@
   <!-- <div class="background" style="background-image:url(assets/img/background/img-90.jpg)"></div> -->
 </section>
 
+@endsection
+
+@section('jscode')
+<script>
+  $(document).ready(function(){
+      var resizeBg = function() {
+        var maxW = 0;
+        $('.item-101>ul>li>img').each(function(){
+          if($(this).width()>maxW){
+            maxW = $(this).width()
+          }
+        });
+
+        $('.item-101>ul>li>img').each(function(){
+            maxW = $(this).width(maxW);
+        });
+      }
+      resizeBg();
+      $(window).resize(resizeBg).trigger("resize");
+  });
+</script>
 @endsection
