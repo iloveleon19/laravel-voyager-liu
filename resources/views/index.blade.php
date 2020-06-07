@@ -8,26 +8,17 @@
   <section class="slide fade-6 kenBurns whiteSlide">
     <div class="content photo_height">
       <div class="container">
-        <div class="wrap noSpaces flex">
-        
-          <div class="col-12-12 noSelect">
-            <div class="relative ae-5">
+        <!-- <div class="leftControl-82 ae-5 fromLeft selected" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div> -->
+        <!-- <div class="rightControl-82 ae-5 fromRight" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div> -->
+        <ul class="slider fromAbove inlineBlock clickable popupContent disableSelect bannerlist" data-slider-id="75-1" style="display: inline-block;">
 
-              <!-- <div class="leftControl-82 ae-5 fromLeft selected" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div> -->
-              <!-- <div class="rightControl-82 ae-5 fromRight" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div> -->
-              <ul class="slider fromAbove inlineBlock clickable popupContent disableSelect bannerlist" data-slider-id="75-1" style="display: inline-block;">
+          @foreach ($banners as $banner)
+            <li class="selected">
+              <img src="{{ Voyager::image( $banner->image ) }}" class="bgx" alt="Image"/>
+            </li>
+          @endforeach
 
-                @foreach ($banners as $banner)
-                  <li class="selected">
-                    <img src="{{ Voyager::image( $banner->image ) }}" class="bgx" alt="Image"/>
-                  </li>
-                @endforeach
-
-              </ul>
-            </div>
-          </div>
-          
-        </div>
+        </ul>
       </div>
     </div>
     <!-- <div class="background" style="background-image:url(assets/img/background/img-10.jpg)"></div> -->
@@ -41,7 +32,7 @@
   $(document).ready(function(){
     var resizeBg = function() {
       var wh = $(window).height(), ww = $(window).width(), h, w, ih, iw;
-      $(".selected>img.bgx").each(function(){
+      $("ul.bannerlist>li.selected>img.bgx").each(function(){
         ih = $(this).height();
         iw = $(this).width();
         if ( (wh / ih) <= (ww / iw) ) { // 圖片寬小於視窗，高大於視窗

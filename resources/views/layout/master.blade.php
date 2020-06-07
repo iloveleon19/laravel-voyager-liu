@@ -108,13 +108,29 @@
     </nav>
   </div>
 
+  @yield('search_panel')
   @yield('slide')
 
   <!-- Loading Progress Bar -->
   <div class="progress-bar blue"></div>
 
 </body>
-
+<script>
+  $(document).ready(function(){
+    var chk_mobile = function(){
+      var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      if(width<=767){
+        $('html').removeClass('desktop');
+        $('html').addClass('mobile');
+      }else if(width>767 &&! window.isMobile){
+        $('html').removeClass('mobile');
+        $('html').addClass('desktop');
+      }
+    }
+    chk_mobile();
+    $(window).resize(chk_mobile).trigger("resize");
+  });
+</script>
 @yield('jscode')
 
 </html>

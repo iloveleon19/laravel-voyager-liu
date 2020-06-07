@@ -10,7 +10,7 @@
     <div class="container">
       <div class="wrap noSpaces align-top">
 
-        <div style="float:left;position:fixed">
+        <div style="float:left;position:fixed;-webkit-transform:translateZ(0);">
 
             <div class="fix-1-12 left" style="margin-top:60px">
   
@@ -24,7 +24,6 @@
             </div>
 
         </div>
-
 
         <div class="flex">
           <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2">
@@ -69,119 +68,6 @@
                   </a>
                 </li>
               @endforeach
-
-
-
-
-              @foreach ($products as $product)
-              <li class="hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                {{-- 要用 slug 導到作品完整頁面 --}}
-                <a class="item-101" href="{{ route('menu.product.item',['slug' => $product->slug]) }}">
-
-                  <ul class="flex later reverse">
-                    <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
-
-                        <div class="flex" style="flex-direction: column;word-wrap: break-word;">
-                          <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h1>
-                          <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                            {{$product->categories->implode('name',',')}}
-                          </div>
-                          <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->location}}</div>
-                          <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                            @if ($product->start_year)
-                              {{$product->start_year}}
-                            @endif
-
-                            @if ( $product->start_year && $product->finish_year)
-                              -
-                            @endif
-
-                            @if ($product->finish_year)
-                              {{$product->finish_year}}
-                            @endif
-                          </div>
-                        </div>
-                    </li>
-                    <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
-                      <img src="{{ Voyager::image( $product->excerpt_image ) }}"  alt="{{$product->seo_title}}"/>
-                    </li>
-                  </ul>
-                </a>
-              </li>
-            @endforeach              @foreach ($products as $product)
-            <li class="hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-              {{-- 要用 slug 導到作品完整頁面 --}}
-              <a class="item-101" href="{{ route('menu.product.item',['slug' => $product->slug]) }}">
-
-                <ul class="flex later reverse">
-                  <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
-
-                      <div class="flex" style="flex-direction: column;word-wrap: break-word;">
-                        <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h1>
-                        <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                          {{$product->categories->implode('name',',')}}
-                        </div>
-                        <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->location}}</div>
-                        <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                          @if ($product->start_year)
-                            {{$product->start_year}}
-                          @endif
-
-                          @if ( $product->start_year && $product->finish_year)
-                            -
-                          @endif
-
-                          @if ($product->finish_year)
-                            {{$product->finish_year}}
-                          @endif
-                        </div>
-                      </div>
-                  </li>
-                  <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
-                    <img src="{{ Voyager::image( $product->excerpt_image ) }}"  alt="{{$product->seo_title}}"/>
-                  </li>
-                </ul>
-              </a>
-            </li>
-          @endforeach              @foreach ($products as $product)
-          <li class="hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-            {{-- 要用 slug 導到作品完整頁面 --}}
-            <a class="item-101" href="{{ route('menu.product.item',['slug' => $product->slug]) }}">
-
-              <ul class="flex later reverse">
-                <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
-
-                    <div class="flex" style="flex-direction: column;word-wrap: break-word;">
-                      <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h1>
-                      <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                        {{$product->categories->implode('name',',')}}
-                      </div>
-                      <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->location}}</div>
-                      <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                        @if ($product->start_year)
-                          {{$product->start_year}}
-                        @endif
-
-                        @if ( $product->start_year && $product->finish_year)
-                          -
-                        @endif
-
-                        @if ($product->finish_year)
-                          {{$product->finish_year}}
-                        @endif
-                      </div>
-                    </div>
-                </li>
-                <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
-                  <img src="{{ Voyager::image( $product->excerpt_image ) }}"  alt="{{$product->seo_title}}"/>
-                </li>
-              </ul>
-            </a>
-          </li>
-        @endforeach
-
-
-
 
             </ul>
           </div>
