@@ -10,32 +10,57 @@
     <div class="container">
       <div class="wrap noSpaces">
 
-        <div class="noSelect margin-top-8 margin-bottom-8 padding-left-3 padding-right-3">
-          <div class="fix-12-12 relative swiper-container ">
+      <div style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+          <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back">< 作品</a>
+      </div>
 
-            <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger" data-popup-id="75-1" data-slider-id="82">
-              @foreach (json_decode ($product->image_sets,true) as $image)
+      <div class="flex">
+        <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
+        <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-3-4 col-phone-1-2">
+          <div class="noSelect margin-top-8 margin-bottom-8 padding-left-3 padding-right-3">
+            <div class="fix-12-12 relative swiper-container ">
+              <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
+                @foreach (json_decode ($product->image_sets,true) as $image)
                 <div class="selected swiper-slide ">
                   <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
                 </div>
-              @endforeach
-            </div>
-
-            <div class=" ae-5 fromLeft padding-1 margin-left-1 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
-            <div class=" ae-5 fromRight padding-1 margin-right-1 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
-
-            <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div>
+                @endforeach
+              </div>
+            <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
+            <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
+            <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
           </div>
-          <div class="fix-12-12 margin-top-8 margin-top-tablet-12  margin-top-phablet-7 margin-top-phone-7">
-            <h1 class="smaller margin-bottom-2 ae-5 fronLeft">{{$product->title}}</h1>
-            <div class="ae-6 fromRight">
-              <p class="large margin-bottom-3 opacity-8 left">
+          <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
+          <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
+            <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h2>
+            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                  {{$product->categories->implode('name',',')}}
+            </div>
+            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">{{$product->location}}</div>
+            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                  @if ($product->start_year)
+                  {{$product->start_year}}
+                  @endif
+  
+                  @if ( $product->start_year && $product->finish_year)
+                                -
+                  @endif
+  
+                  @if ($product->finish_year)
+                  {{$product->finish_year}}
+                  @endif
+              </div>
+          </div>
+            <!-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$product->title}}</h1> -->
+            <div class="ae-6 fromRight left productcontent">
+              <p class="large margin-bottom-3 opacity-8">
                 {!! $product->body !!}
               </p>
             </div>
           </div>
         </div>
-
+        </div>
+      </div>
       </div>
     </div>
   </div>

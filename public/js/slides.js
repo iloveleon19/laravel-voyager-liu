@@ -2110,7 +2110,7 @@ if (window.isRetina) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\js\slides.js */"./resources/js/slides.js");
+module.exports = __webpack_require__(/*! /Users/chenpeiyu/code/laravel-voyager-liu/resources/js/slides.js */"./resources/js/slides.js");
 
 
 /***/ })
