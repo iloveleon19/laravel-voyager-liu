@@ -106,9 +106,11 @@
         </ul>
       </div>
     </nav>
+
+    @yield('nav_grid')
+
   </div>
 
-  @yield('search_panel')
   @yield('slide')
 
   <!-- Loading Progress Bar -->

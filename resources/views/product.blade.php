@@ -13,11 +13,9 @@
         <div style="float:left;position:fixed;-webkit-transform:translateZ(0);">
 
             <div class="fix-1-12 left" style="margin-top:60px">
-  
               <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
-                    <input type="text" class=" input-product-search" style="margin:0 !important;" name="search" placeholder="Search"/>
+                <input type="text" class=" input-product-search" style="margin:0 !important;" name="search" placeholder="Search"/>
               </form>
-  
               <ul class="equal equalMobile">
                   {!! menu('product_search', 'layout.menu.search') !!}
               </ul>
