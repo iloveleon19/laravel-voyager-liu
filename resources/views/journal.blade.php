@@ -39,7 +39,7 @@
         </div>
 
         <!-- for mobile 佩瑜版 -->
-        <!-- <div style="" class="showForMobile hidden">
+        {{-- <div style="" class="showForMobile hidden">
             <div class="fix-12-12 left mobileSearchMenu" style="margin-top:70px">
               <form class="slides-form" action="#" autocomplete="off">
                     <input type="text" class=" input-product-search mobileSearch" style="margin:0 !important; display:inline-block !important;" name="search" placeholder="Search"/>
@@ -50,7 +50,7 @@
               </ul>
             </div>
             
-        </div> -->
+        </div> --}}
 
         {{-- 手機版顯示 --}}
         <nav class="showForMobile hidden margin-top-phablet-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
