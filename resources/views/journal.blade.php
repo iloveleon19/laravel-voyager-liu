@@ -4,6 +4,20 @@
 
 @section('slide')
 
+@section('nav_grid')
+<nav class="sidebar white left col-12-12" data-sidebar-id="2">
+  <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
+  <div class="content">
+    <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
+      <input type="text" class=" input-product-search" style="margin:0 !important;" name="search" placeholder="Search"/>
+    </form>
+    <ul class="equal equalMobile">
+      {!! menu('product_search', 'layout.menu.search') !!}
+    </ul>
+  </div>
+</nav>
+@endsection
+
 <!-- one -->
 <section class="slide fade-6 kenBurns whiteSlide">
   <div class="content">
@@ -43,10 +57,9 @@
               @foreach ($blogs as $blog)
                 <li class="hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
                   {{-- 要用 slug 導到作品完整頁面 --}}
-                  <a class="item-101" href="{{ route('menu.product.item',['slug' => $blog->slug]) }}">
-
+                  <a class="item-101" href="{{ route('menu.journal.item',['slug' => $blog->slug]) }}">
                     <ul class="flex later reverse">
-                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-2 left">
 
                           <div class="flex" style="flex-direction: column;word-wrap: break-word;">
                             <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h1>
@@ -69,7 +82,7 @@
                             </div>
                           </div>
                       </li>
-                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-2">
                         <img src="{{ Voyager::image( $blog->excerpt_image ) }}"  alt="{{$blog->seo_title}}"/>
                       </li>
                     </ul>
