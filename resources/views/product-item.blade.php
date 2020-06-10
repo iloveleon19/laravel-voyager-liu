@@ -14,6 +14,30 @@
           <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back">< 作品</a>
       </div>
 
+  <nav class="panel top margin-top-6">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="3">< 作品</span></div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+  <div class='grid'>
+    <nav class="sidebar white left col-12-12" data-sidebar-id="3">
+      <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
+      <div class="content">
+        <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
+        <ul class="mainMenu margin-top-3 big">
+          {!! menu('front-menu','layout.menu.default') !!}
+        </ul>
+        <ul class="social opacity-8">
+          <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
+          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li> -->
+          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
       <div class="flex">
         <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
         <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-3-4 col-phone-1-2">

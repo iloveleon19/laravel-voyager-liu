@@ -2,10 +2,10 @@
 
 @section('title',$title)
 
-@section('slide')
+
 
 @section('nav_grid')
-{{-- <nav class="sidebar white left col-12-12" data-sidebar-id="2">
+ <nav class="sidebar white left col-12-12" data-sidebar-id="2">
   <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
   <div class="content">
     <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
@@ -15,8 +15,10 @@
       {!! menu('product_search', 'layout.menu.search') !!}
     </ul>
   </div>
-</nav> --}}
+</nav> 
 @endsection
+
+@section('slide')
 
 <!-- one -->
 <section class="slide fade-6 kenBurns whiteSlide">
@@ -37,28 +39,30 @@
         </div>
 
         <!-- for mobile 佩瑜版 -->
-        <div style="" class="showForMobile hidden">
+        <!-- <div style="" class="showForMobile hidden">
             <div class="fix-12-12 left mobileSearchMenu" style="margin-top:70px">
               <form class="slides-form" action="#" autocomplete="off">
-                    <input type="text" class=" input-product-search mobileSearch" style="margin:0 !important;" name="search" placeholder="Search"/>
+                    <input type="text" class=" input-product-search mobileSearch" style="margin:0 !important; display:inline-block !important;" name="search" placeholder="Search"/>
+                    <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
               </form>
               <ul class="equal equalMobile mobileSearchList">
                   {!! menu('product_search', 'layout.menu.search') !!}
               </ul>
             </div>
-        </div>
+            
+        </div> -->
 
         {{-- 手機版顯示 --}}
-        {{-- <nav class="showForMobile hidden margin-top-phablet-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+        <nav class="showForMobile hidden margin-top-phablet-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <div class="sections">
               <div class="left">
                 <span class="button actionButton sidebarTrigger" data-sidebar-id="2">Search
                 </span>
               </div>
           </div>
-        </nav> --}}
+        </nav>
 
-        <div class="flex margin-top-phablet-2">
+        <div class="flex margin-top-phablet-12">
           <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 showForDesktop hideForMobile">
           </div>
 
@@ -136,6 +140,7 @@
         $(".panel").css("display","none");
         $(".hoverli").css("display","none");
         $(".mobileSearchMenu").css("margin-top","0");
+        // $(".close").css("display","inline-block");
         
       });
       $(".mobileSearch").blur(function(){
@@ -143,6 +148,7 @@
         $(".panel").css("display","inline");
         $(".hoverli").css("display","inline");
         $(".mobileSearchMenu").css("margin-top","70px");
+        // $(".close").css("display","none");
       });
 
       $(".desktopSearch").focus(function(){
