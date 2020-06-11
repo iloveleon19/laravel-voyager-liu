@@ -5,16 +5,22 @@
 @section('slide')
 
 <!-- one -->
-<section class="slide fade-6 kenBurns whiteSlide">
+<section class="slide fade-6 kenBurns whiteSlide ">
   <div class="content">
     <div class="container">
       <div class="wrap noSpaces">
 
-      <div style="float:left;position:fixed;-webkit-transform:translateZ(0);">
-          <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back">< 作品</a>
+      {{-- 桌面版顯示 --}}
+      <div class="hideForMobile margin-top-1" style="float:left;position:absolute;">
+          <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">作品</a>
       </div>
 
-  <nav class="panel top margin-top-6">
+      {{-- 手機版顯示 --}}
+      <div class="showForMobile margin-top-1" style="float:left;position:absolute;">
+        <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1"></span>作品</a>
+      </div>
+
+  {{-- <nav class="panel top margin-top-6">
     <div class="sections">
       <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="3">< 作品</span></div>
     </div>
@@ -35,13 +41,14 @@
         </ul>
       </div>
     </nav>
-  </div>
+  </div> --}}
 
 
       <div class="flex">
-        <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
-        <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-3-4 col-phone-1-2">
-          <div class="noSelect margin-top-8 margin-bottom-8 padding-left-3 padding-right-3">
+        <div class="hideForMobile col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
+
+        <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
+          <div class="noSelect margin-top-13 margin-bottom-8 padding-left-3 padding-right-3">
             <div class="fix-12-12 relative swiper-container ">
               <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                 @foreach (json_decode ($product->image_sets,true) as $image)

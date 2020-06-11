@@ -5,13 +5,13 @@
 
 
 @section('nav_grid')
- <nav class="sidebar white left col-12-12" data-sidebar-id="2">
+ <nav class="sidebar white left col-12-12 padding-0" data-sidebar-id="2">
   <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-  <div class="content">
+  <div class="content padding-0">
     <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
       <input type="text" class=" input-product-search" style="margin:0 !important;" name="search" placeholder="Search"/>
     </form>
-    <ul class="equal equalMobile">
+    <ul class="equal equalMobile mobileSearchList">
       {!! menu('product_search', 'layout.menu.search') !!}
     </ul>
   </div>
@@ -53,10 +53,10 @@
         </div> --}}
 
         {{-- 手機版顯示 --}}
-        <nav class="showForMobile hidden margin-top-phablet-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+        <nav class="showForMobile hidden margin-top-phablet-7 fix-12-12" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <div class="sections">
               <div class="left">
-                <span class="button actionButton sidebarTrigger" data-sidebar-id="2">Search
+                <span class="actionButton sidebarTrigger searchButton" data-sidebar-id="2">Search
                 </span>
               </div>
           </div>
@@ -136,7 +136,7 @@
       $(window).resize(resizeBg).trigger("resize");
 
       $(".mobileSearch").focus(function(){
-        $(".mobileSearchList").css("display","inline");
+        // $(".mobileSearchList").css("display","inline");
         $(".panel").css("display","none");
         $(".hoverli").css("display","none");
         $(".mobileSearchMenu").css("margin-top","0");
@@ -144,7 +144,7 @@
         
       });
       $(".mobileSearch").blur(function(){
-        $(".mobileSearchList").css("display","none");
+        // $(".mobileSearchList").css("display","none");
         $(".panel").css("display","inline");
         $(".hoverli").css("display","inline");
         $(".mobileSearchMenu").css("margin-top","70px");

@@ -7,6 +7,7 @@
   <link href="{{mix('/css/custom.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/swiper.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
 
   <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
   <script src="{{mix('/js/slides.js')}}" type="text/javascript"></script>
