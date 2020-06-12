@@ -50,7 +50,7 @@
           <div class="hideForMobile col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
 
         <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
-          <div class="noSelect margin-top-13 margin-bottom-8 padding-left-3 padding-right-3">
+          <div class="noSelect margin-top-1 margin-top-phablet-13 margin-bottom-8 padding-left-3 padding-right-3">
             <div class="fix-12-12 relative swiper-container ">
               <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                 @foreach (json_decode ($blog->image_sets,true) as $image)
