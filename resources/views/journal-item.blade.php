@@ -39,7 +39,7 @@
                   <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                     @foreach (json_decode ($blog->image_sets,true) as $image)
                       <div class="selected swiper-slide ">
-                        <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
+                        <img src="{{ Voyager::image( $image ) }}" class="productImg" alt="iPhone"/>
                       </div>
                     @endforeach
                   </div>
@@ -101,11 +101,11 @@
               @foreach (json_decode ($blog->image_sets,true) as $k => $image)
                 @if($k==0)
                   <li class="selected">
-                    <img src="{{ Voyager::image( $image ) }}" class="rounded" alt="Image"/>
+                    <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
                   </li>
                 @else
                   <li>
-                    <img src="{{ Voyager::image( $image ) }}" class="rounded" alt="Image"/>
+                    <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
                   </li>
                 @endif
               @endforeach
