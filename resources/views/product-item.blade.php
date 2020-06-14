@@ -5,93 +5,82 @@
 @section('slide')
 
 <!-- one -->
-<section class="slide fade-6 kenBurns whiteSlide ">
+<section class="slide fade-6 kenBurns whiteSlide">
   <div class="content">
     <div class="container">
-      <div class="wrap noSpaces">
+      <div class="wrap noSpaces align-top">
 
-      {{-- 桌面版顯示 --}}
-      <div class="hideForMobile margin-top-1" style="float:left;position:absolute;">
-          <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">作品</a>
-      </div>
+        {{-- 桌面版顯示 --}}
+        <div class="hideForMobile fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+          <ul class="equal equalMobile">
+            <li>
+              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">作品</a>
+            </li>
+          </ul>
+        </div>
 
-      {{-- 手機版顯示 --}}
-      <div class="showForMobile margin-top-1" style="float:left;position:absolute;">
-        <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1"></span>作品</a>
-      </div>
+        {{-- 手機版顯示 --}}
+        <nav class="showForMobile hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
+          <div class="sections">
+            <div class="left">
+              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1"></span>作品</a>
+            </div>
+          </div>
+        </nav>
 
-  {{-- <nav class="panel top margin-top-6">
-    <div class="sections">
-      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="3">< 作品</span></div>
-    </div>
-  </nav>
-  <!-- Sidebar -->
-  <div class='grid'>
-    <nav class="sidebar white left col-12-12" data-sidebar-id="3">
-      <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
-      <div class="content">
-        <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
-        <ul class="mainMenu margin-top-3 big">
-          {!! menu('front-menu','layout.menu.default') !!}
-        </ul>
-        <ul class="social opacity-8">
-          <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
-          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li> -->
-          <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
-        </ul>
-      </div>
-    </nav>
-  </div> --}}
+        <div class="flex margin-top-phablet-12">
+          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 hideForMobile"></div>
 
+          <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
 
-      <div class="flex">
-        <div class="hideForMobile col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
-
-        <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
-          <div class="noSelect margin-top-1 margin-top-phablet-13 margin-bottom-8 padding-left-3 padding-right-3">
-            <div class="fix-12-12 relative swiper-container ">
-              <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
-                @foreach (json_decode ($product->image_sets,true) as $image)
-                <div class="selected swiper-slide ">
-                  <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
+            <ul class="equal equalMobile margin-1">
+              <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
+                <div class="fix-12-12 relative swiper-container">
+                  <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
+                    @foreach (json_decode ($product->image_sets,true) as $image)
+                      <div class="selected swiper-slide ">
+                        <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
+                      </div>
+                    @endforeach
+                  </div>
+                  <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
+                  <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
+                  <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
                 </div>
-                @endforeach
-              </div>
-            <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
-            <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
-            <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
-          </div>
-          <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
-          <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
-            <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h2>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
-                  {{$product->categories->implode('name',',')}}
-            </div>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">{{$product->location}}</div>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
-                  @if ($product->start_year)
-                  {{$product->start_year}}
-                  @endif
-  
-                  @if ( $product->start_year && $product->finish_year)
-                                -
-                  @endif
-  
-                  @if ($product->finish_year)
-                  {{$product->finish_year}}
-                  @endif
-              </div>
-          </div>
-            <!-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$product->title}}</h1> -->
-            <div class="ae-6 fromRight left productcontent">
-              <p class="large margin-bottom-3 opacity-8">
-                {!! $product->body !!}
-              </p>
-            </div>
+                <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
+                  <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
+                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$product->title}}</h2>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                      {{$product->categories->implode('name',',')}}
+                    </div>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">{{$product->location}}</div>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                      @if ($product->start_year)
+                        {{$product->start_year}}
+                      @endif
+      
+                      @if ( $product->start_year && $product->finish_year)
+                        -
+                      @endif
+      
+                      @if ($product->finish_year)
+                        {{$product->finish_year}}
+                      @endif
+                    </div>
+                  </div>
+                  {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$product->title}}</h1> --}}
+                  <div class="ae-6 fromRight left productcontent">
+                    <p class="large margin-bottom-3 opacity-8">
+                      {!! $product->body !!}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
           </div>
         </div>
-        </div>
-      </div>
+
       </div>
     </div>
   </div>
@@ -149,7 +138,6 @@
     },
     loop : true,//循環
     })
-
 </script>
 @endsection
 

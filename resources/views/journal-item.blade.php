@@ -8,91 +8,78 @@
 <section class="slide fade-6 kenBurns whiteSlide">
   <div class="content">
     <div class="container">
-      <div class="wrap noSpaces">
+      <div class="wrap noSpaces align-top">
 
-      {{-- 桌面版顯示 --}}
-      <div class="hideForMobile margin-top-1" style="float:left;position:absolute;">
-        <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
-      </div>
+        {{-- 桌面版顯示 --}}
+        <div class="hideForMobile fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+          <ul class="equal equalMobile">
+            <li>
+              <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
+            </li>
+          </ul>
+        </div>
 
-      {{-- 手機版顯示 --}}
-      <div class="showForMobile margin-top-1" style="float:left;position:absolute;">
-        <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
-      </div>
-        
-      {{-- <div class="noSelect margin-top-13 margin-bottom-8 padding-left-3 padding-right-3">
-          <div class="fix-12-12 relative swiper-container ">
+        {{-- 手機版顯示 --}}
+        <nav class="showForMobile hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
+          <div class="sections">
+            <div class="left">
+              <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
+            </div>
+          </div>
+        </nav>
 
-            <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger" data-popup-id="75-1" data-slider-id="82">
-              @foreach (json_decode ($blog->image_sets,true) as $image)
-                <div class="selected swiper-slide ">
-                  <img src="{{ Voyager::image( $image ) }}" class="blogImg rounded" alt="iPhone"/>
+        <div class="flex margin-top-phablet-12">
+          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 hideForMobile"></div>
+
+          <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
+
+            <ul class="equal equalMobile margin-1">
+              <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
+                <div class="fix-12-12 relative swiper-container">
+                  <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
+                    @foreach (json_decode ($blog->image_sets,true) as $image)
+                      <div class="selected swiper-slide ">
+                        <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
+                      </div>
+                    @endforeach
+                  </div>
+                  <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
+                  <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
+                  <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
                 </div>
-              @endforeach
-            </div>
-
-            <div class=" ae-5 fromLeft padding-1 margin-left-1 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
-            <div class=" ae-5 fromRight padding-1 margin-right-1 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
-
-            {{-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> --}}
-          {{-- </div>
-          <div class="fix-12-12 margin-top-8 margin-top-tablet-12  margin-top-phablet-7 margin-top-phone-7">
-            <h1 class="smaller margin-bottom-2 ae-5 fronLeft">{{$blog->title}}</h1>
-            <div class="ae-6 fromRight">
-              <p class="large margin-bottom-3 opacity-8 left">
-                {!! $blog->body !!}
-              </p>
-            </div>
-          </div>
-        </div> --}}
-
-        <div class="flex">
-          <div class="hideForMobile col-6-12 col-desktop-1-2 col-tablet-2-5 col-phablet-1-4 col-phone-1-2"></div>
-
-        <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
-          <div class="noSelect margin-top-1 margin-top-phablet-13 margin-bottom-8 padding-left-3 padding-right-3">
-            <div class="fix-12-12 relative swiper-container ">
-              <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
-                @foreach (json_decode ($blog->image_sets,true) as $image)
-                <div class="selected swiper-slide ">
-                  <img src="{{ Voyager::image( $image ) }}" class="productImg rounded" alt="iPhone"/>
+                <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
+                  <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
+                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                      {{$blog->categories->implode('name',',')}}
+                    </div>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">{{$blog->location}}</div>
+                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                      @if ($blog->start_year)
+                        {{$blog->start_year}}
+                      @endif
+  
+                      @if ( $blog->start_year && $blog->finish_year)
+                        -
+                      @endif
+  
+                      @if ($blog->finish_year)
+                        {{$blog->finish_year}}
+                      @endif
+                    </div>
+                  </div>
+                  {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
+                  <div class="ae-6 fromRight left productcontent">
+                    <p class="large margin-bottom-3 opacity-8">
+                      {!! $blog->body !!}
+                    </p>
+                  </div>
                 </div>
-                @endforeach
-              </div>
-            <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
-            <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
-            <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
-          </div>
-          <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
-          <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
-            <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
-                  {{$blog->categories->implode('name',',')}}
-            </div>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">{{$blog->location}}</div>
-            <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
-                  @if ($blog->start_year)
-                  {{$blog->start_year}}
-                  @endif
-  
-                  @if ( $blog->start_year && $blog->finish_year)
-                                -
-                  @endif
-  
-                  @if ($blog->finish_year)
-                  {{$blog->finish_year}}
-                  @endif
-              </div>
-          </div>
-            <!-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> -->
-            <div class="ae-6 fromRight left productcontent">
-              <p class="large margin-bottom-3 opacity-8">
-                {!! $blog->body !!}
-              </p>
-            </div>
+              </li>
+            </ul>
+
           </div>
         </div>
-      </div>
 
       </div>
     </div>
@@ -151,7 +138,6 @@
     },
     loop : true,//循環
     })
-
 </script>
 @endsection
 

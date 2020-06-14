@@ -29735,10 +29735,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/chenpeiyu/code/laravel-voyager-liu/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/chenpeiyu/code/laravel-voyager-liu/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Users/chenpeiyu/code/laravel-voyager-liu/resources/sass/slides.scss */"./resources/sass/slides.scss");
-module.exports = __webpack_require__(/*! /Users/chenpeiyu/code/laravel-voyager-liu/resources/sass/custom.scss */"./resources/sass/custom.scss");
+__webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\sass\slides.scss */"./resources/sass/slides.scss");
+module.exports = __webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\sass\custom.scss */"./resources/sass/custom.scss");
 
 
 /***/ })
