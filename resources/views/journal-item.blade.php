@@ -11,7 +11,16 @@
       <div class="wrap noSpaces align-top">
 
         {{-- 桌面版顯示 --}}
-        <div class="hideForMobile fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+        <div class="hideForMobile hideForTablet fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+          <ul class="equal equalMobile">
+            <li>
+              <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
+            </li>
+          </ul>
+        </div>
+
+      {{-- 平板版顯示 --}}
+        <div class="showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <ul class="equal equalMobile">
             <li>
               <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
@@ -20,7 +29,7 @@
         </div>
 
         {{-- 手機版顯示 --}}
-        <nav class="showForMobile hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
+        <nav class="showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
           <div class="sections">
             <div class="left">
               <a href="{{ route('menu.journal',['slug' => $blog->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">日誌</a>
@@ -29,7 +38,7 @@
         </nav>
 
         <div class="flex margin-top-phablet-12">
-          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 hideForMobile"></div>
+          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
 
           <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
 

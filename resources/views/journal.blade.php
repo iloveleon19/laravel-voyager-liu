@@ -25,7 +25,7 @@
       <div class="wrap noSpaces align-top">
 
         {{-- 桌面版顯示 --}}
-        <div class="hideForMobile fix-2-12 left margin-top-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+        <div class="hideForMobile hideForTablet fix-2-12 left margin-top-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
             <input type="text" class=" input-product-search desktopSearch" style="margin:0 !important;" name="search" placeholder="Search"/>
           </form>
@@ -34,8 +34,18 @@
           </ul>
         </div>
 
+      {{-- 平板版顯示 --}}
+        <div class="showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-6" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
+          <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
+            <input type="text" class=" input-product-search desktopSearch" style="margin:0 !important;" name="search" placeholder="Search"/>
+          </form>
+          <ul class="equal equalMobile desktopSearchList">
+                    {!! menu('product_search', 'layout.menu.search') !!}
+          </ul>
+        </div>
+
         {{-- 手機版顯示 --}}
-        <nav class="showForMobile hidden margin-top-phablet-7 fix-12-12" style="float:left;position:absolute;">
+        <nav class="showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12" style="float:left;position:absolute;">
           <div class="sections">
               <div class="left">
                 <span class="actionButton sidebarTrigger searchButton" data-sidebar-id="2">Search
@@ -45,7 +55,7 @@
         </nav>
 
         <div class="flex margin-top-phablet-13">
-          <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 showForDesktop hideForMobile"></div>
+          <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
 
           <div class="col-4-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
             <ul class="flex equal equalMobile margin-1">
@@ -56,7 +66,7 @@
                   <a class="item-101" href="{{ route('menu.journal.item',['slug' => $blog->slug]) }}">
 
                     <ul class="flex later reverse">
-                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-2 left">
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
                         <div class="flex" style="flex-direction: column;word-wrap: break-word;">
                           <h3 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h3>
                           <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
@@ -78,7 +88,7 @@
                           </div>
                         </div>
                       </li>
-                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-2">
+                      <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1">
                         <img src="{{ Voyager::image( $blog->excerpt_image ) }}"  alt="{{$blog->seo_title}}"/>
                       </li>
                     </ul>
