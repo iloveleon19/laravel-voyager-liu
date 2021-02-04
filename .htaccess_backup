@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+
+RewriteEngine on
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^jiahongc1.sg-host.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.jiahongc1.sg-host.com$
+RewriteCond %{REQUEST_URI} !laravel-voyager-liu/public/
+RewriteRule (.*) /laravel-voyager-liu/public/$1 [L]
+
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
