@@ -58,7 +58,7 @@
                 <li class="col-3-12 ae-3 fromCenter">
   
                   @if($officeIntro->show_partner_image)
-                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" alt="{{$partner->name}}"/>
+                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" width="128" alt="{{$partner->name}}"/>
                   @endif
 
                   <div class="fix-3-12">

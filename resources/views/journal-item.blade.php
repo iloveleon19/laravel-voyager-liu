@@ -48,7 +48,7 @@
                   <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                     @foreach (json_decode ($blog->image_sets,true) as $image)
                       <div class="selected swiper-slide ">
-                        <img src="{{ Voyager::image( $image ) }}" class="productImg" alt="iPhone"/>
+                        <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
                       </div>
                     @endforeach
                   </div>
