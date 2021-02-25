@@ -16,7 +16,6 @@ class OfficeIntro extends Model
 
     public function partner()
     {
-        // sort ???
         return $this->belongsToMany('App\Member','office_intro_members','office_intro_id','member_id');
     }
 }

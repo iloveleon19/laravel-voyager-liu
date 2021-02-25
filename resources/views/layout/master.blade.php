@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
+  @yield('meta_seo')
 
-  <link href="{{mix('/css/custom.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/swiper.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{mix('/css/custom.css')}}" rel="stylesheet" type="text/css">
 
   <script src="{{mix('/js/app.js')}}" type="text/javascript"></script>
   <script src="{{mix('/js/slides.js')}}" type="text/javascript"></script>
@@ -97,11 +98,22 @@
       <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
       <div class="content">
         <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
+
+        {{-- MENU 選單 --}}
         <ul class="mainMenu margin-top-3 big">
           {!! menu('front-menu','layout.menu.default') !!}
         </ul>
+
+        @php
+          $model = app('App\\OfficeIntro');
+          $OfficeIntro = $model::where('id', 1)->get()->first();
+        @endphp
+
         <ul class="social opacity-8">
-          <li><a href="https://www.facebook.com/chenghsinliu0930"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
+          {{-- Office Intro 連結設定 --}}
+          @if(!empty($OfficeIntro->facebook))
+            <li><a href="{{$OfficeIntro->facebook}}"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
+          @endif
           <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li> -->
           <!-- <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li> -->
         </ul>

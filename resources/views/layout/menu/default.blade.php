@@ -1,5 +1,3 @@
-<ul>
-
 @php
 
     if (Voyager::translatable($items)) {
@@ -51,5 +49,3 @@
         @endif
     </li>
 @endforeach
-
-</ul>

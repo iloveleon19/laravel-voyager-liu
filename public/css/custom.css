@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 .social-mail {
   background: #bf9107 !important;
   color: #fff !important;
@@ -120,18 +126,7 @@ body.slides {
   font-size: 27px;
 }
 
-.mobileSearch {
-  font-size: 27px;
-  display: block !important;
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
-  padding-left: 22px !important;
-  background: #fafafa !important;
-  border: 1px solid #dddddd !important;
-  border-radius: 0 !important;
-}
-
-.mobileSearchList ul li {
+ul.mobileSearchList li {
   text-align: left;
   font-size: 32px;
   color: #999999;
@@ -142,11 +137,11 @@ body.slides {
   cursor: pointer;
 }
 
-.desktopSearchList {
+ul.desktopSearchList {
   display: none;
 }
 
-.desktopSearchList ul li {
+ul.desktopSearchList li {
   text-align: left;
   font-size: 32px;
   color: #999999;
@@ -156,7 +151,7 @@ body.slides {
   cursor: pointer;
 }
 
-.desktopSearchList ul li a:hover {
+ul.desktopSearchList li a:hover {
   color: #000000;
 }
 
@@ -171,5 +166,31 @@ body.slides {
   width: 100%;
   min-width: 150px;
   color: #999999;
+}
+
+.opacity {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  background-color: #a0a0a0;
+}
+
+.mask {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  position: fixed;
+  _position: absolute;
+  display: none;
+}
+
+.searchSide {
+  z-index: 100;
+  position: fixed;
+  float: left;
+  -webkit-transform: translateZ(0);
 }
 

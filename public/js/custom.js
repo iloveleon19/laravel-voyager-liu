@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chenpeiyu/workspace/laravel-voyager-liu/resources/js/custom.js */"./resources/js/custom.js");
+module.exports = __webpack_require__(/*! C:\Users\Jia-hong\code\laravel-voyager\resources\js\custom.js */"./resources/js/custom.js");
 
 
 /***/ })

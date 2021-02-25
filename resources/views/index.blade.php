@@ -10,7 +10,12 @@
       <div class="container">
         <!-- <div class="leftControl-82 ae-5 fromLeft selected" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div> -->
         <!-- <div class="rightControl-82 ae-5 fromRight" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div> -->
-        <ul class="slider fromAbove inlineBlock clickable popupContent disableSelect bannerlist" data-slider-id="75-1" style="display: inline-block;">
+        
+        @php
+          $is_slider = count($banners)<=1 ? '' : 'slider';
+        @endphp
+        
+        <ul class="{{$is_slider}} fromAbove inlineBlock clickable popupContent disableSelect bannerlist" data-slider-id="75-1" style="display: inline-block;">
 
           @foreach ($banners as $banner)
             <li class="selected">

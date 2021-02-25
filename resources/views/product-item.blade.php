@@ -14,7 +14,7 @@
         <div class="hideForMobile hideForTablet fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <ul class="equal equalMobile">
             <li>
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">作品</a>
+              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1">作品</a>
             </li>
           </ul>
         </div>
@@ -23,7 +23,7 @@
         <div class="showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
           <ul class="equal equalMobile">
             <li>
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1">作品</a>
+              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1">作品</a>
             </li>
           </ul>
         </div>
@@ -32,7 +32,7 @@
         <nav class="showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
           <div class="sections">
             <div class="left">
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-arrow-left"></i><span class="padding-left-1"></span>作品</a>
+              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1"></span>作品</a>
             </div>
           </div>
         </nav>
@@ -44,18 +44,27 @@
 
             <ul class="equal equalMobile margin-1">
               <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
+
+                @php
+                  $image_sets = json_decode($product->image_sets,true);
+                  $swiper_class = count($image_sets)<=1 ? "" : "swiper-container";
+                @endphp
+
                 <div class="fix-12-12 relative swiper-container">
                   <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
-                    @foreach (json_decode ($product->image_sets,true) as $image)
+                    @foreach ($image_sets as $image)
                       <div class="selected swiper-slide ">
                         <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
                         {{-- style="width: auto;height: 358px;" --}}
                       </div>
                     @endforeach
                   </div>
-                  <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
-                  <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
-                  <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
+
+                  @if(!empty($swiper_class))
+                    <div class=" ae-5 fromLeft padding-1 margin-left-2 arrow-White swiper-button-prev" data-slider-id="82" data-slider-action="prev"></div>
+                    <div class=" ae-5 fromRight padding-1 margin-right-2 arrow-White swiper-button-next" data-slider-id="82" data-slider-action="next"></div>
+                    <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
+                  @endif
                 </div>
                 <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
                   <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
@@ -105,10 +114,18 @@
       <div class="wrap space">
         <div class="fix-8-12 noSelect">
           <div class="relative ae-5">
-            <div class="leftControl-82 ae-5 fromLeft selected" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div>
-            <div class="rightControl-82 ae-5 fromRight" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div>
+
+            @php
+              $image_sets = json_decode($product->image_sets,true);
+              $swiper_class = count($image_sets)==1 ? "" : "swiper-container";
+            @endphp
+
+            @if(!empty($swiper_class))
+              <div class="leftControl-82 ae-5 fromLeft selected" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div>
+              <div class="rightControl-82 ae-5 fromRight" data-popup-id="75-1" data-slider-id="75-1" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div>
+            @endif
             <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-1" style="display: inline-block;" >
-              @foreach (json_decode ($product->image_sets,true) as $k => $image)
+              @foreach ($image_sets as $k => $image)
                 @if($k==0)
                   <li class="selected">
                     <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
@@ -119,6 +136,12 @@
                   </li>
                 @endif
               @endforeach
+
+              @if($k==0)
+                <li>
+                  <img src="{{ Voyager::image( $image_sets[$k] ) }}" alt="Image"/>
+                </li>
+              @endif
 
             </ul>
           </div>

@@ -1,4 +1,3 @@
-<ul>
 
 @php
 
@@ -41,7 +40,7 @@
 
     @endphp
 
-    <li class="{{ $isActive }} item-100 padding-left-3 padding-top-1 padding-bottom-1">
+    <li class="searchable search_context {{ $isActive }} item-100 padding-left-3 padding-top-1 padding-bottom-1" data-index="{{ $item->title }}">
         <a href="{{ url($item->link()) }}" target="{{ $item->target }}" style="{{ $styles }}">
             {!! $icon !!}
             <span>{{ $item->title }}</span>
@@ -51,5 +50,3 @@
         @endif
     </li>
 @endforeach
-
-</ul>
