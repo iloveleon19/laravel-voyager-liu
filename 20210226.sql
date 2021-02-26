@@ -14,10 +14,12 @@
 
 
 -- 傾印 homestead 的資料庫結構
+DROP DATABASE IF EXISTS `homestead`;
 CREATE DATABASE IF NOT EXISTS `homestead` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `homestead`;
 
 -- 傾印  資料表 homestead.banners 結構
+DROP TABLE IF EXISTS `banners`;
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -49,6 +51,7 @@ INSERT INTO `banners` (`id`, `slug`, `title`, `seo_title`, `image`, `status`, `o
 /*!40000 ALTER TABLE `banners` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.blogs 結構
+DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE IF NOT EXISTS `blogs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -80,6 +83,7 @@ INSERT INTO `blogs` (`id`, `title`, `year`, `month`, `body`, `excerpt_image`, `p
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.blog_categories 結構
+DROP TABLE IF EXISTS `blog_categories`;
 CREATE TABLE IF NOT EXISTS `blog_categories` (
   `blog_id` int(10) unsigned NOT NULL DEFAULT '0',
   `category_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -98,6 +102,7 @@ INSERT INTO `blog_categories` (`blog_id`, `category_id`) VALUES
 /*!40000 ALTER TABLE `blog_categories` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.categories 結構
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned DEFAULT NULL,
@@ -121,6 +126,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.data_rows 結構
+DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE IF NOT EXISTS `data_rows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `data_type_id` int(10) unsigned NOT NULL,
@@ -297,6 +303,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 /*!40000 ALTER TABLE `data_rows` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.data_types 結構
+DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE IF NOT EXISTS `data_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -337,6 +344,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 /*!40000 ALTER TABLE `data_types` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.failed_jobs 結構
+DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -353,6 +361,7 @@ DELETE FROM `failed_jobs`;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.members 結構
+DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -381,6 +390,7 @@ INSERT INTO `members` (`id`, `name`, `intro`, `order`, `status`, `email`, `faceb
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.menus 結構
+DROP TABLE IF EXISTS `menus`;
 CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -400,6 +410,7 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.menu_items 結構
+DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE IF NOT EXISTS `menu_items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menu_id` int(10) unsigned DEFAULT NULL,
@@ -460,6 +471,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 /*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.migrations 結構
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -500,6 +512,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.office_intros 結構
+DROP TABLE IF EXISTS `office_intros`;
 CREATE TABLE IF NOT EXISTS `office_intros` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -527,6 +540,7 @@ INSERT INTO `office_intros` (`id`, `title`, `body`, `show_patent`, `show_partner
 /*!40000 ALTER TABLE `office_intros` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.office_intro_members 結構
+DROP TABLE IF EXISTS `office_intro_members`;
 CREATE TABLE IF NOT EXISTS `office_intro_members` (
   `office_intro_id` int(10) unsigned NOT NULL DEFAULT '0',
   `member_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -549,6 +563,7 @@ INSERT INTO `office_intro_members` (`office_intro_id`, `member_id`) VALUES
 /*!40000 ALTER TABLE `office_intro_members` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.office_intro_patents 結構
+DROP TABLE IF EXISTS `office_intro_patents`;
 CREATE TABLE IF NOT EXISTS `office_intro_patents` (
   `office_intro_id` int(10) unsigned NOT NULL,
   `patent_id` int(10) unsigned NOT NULL,
@@ -568,6 +583,7 @@ INSERT INTO `office_intro_patents` (`office_intro_id`, `patent_id`) VALUES
 /*!40000 ALTER TABLE `office_intro_patents` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.pages 結構
+DROP TABLE IF EXISTS `pages`;
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
@@ -593,6 +609,7 @@ INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `sl
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.patents 結構
+DROP TABLE IF EXISTS `patents`;
 CREATE TABLE IF NOT EXISTS `patents` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -614,6 +631,7 @@ INSERT INTO `patents` (`id`, `title`, `image_sets`, `desrc`, `order`, `status`, 
 /*!40000 ALTER TABLE `patents` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.permissions 結構
+DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -702,6 +720,7 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.permission_role 結構
+DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
@@ -790,6 +809,7 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.posts 結構
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
@@ -821,6 +841,7 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.products 結構
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -854,6 +875,7 @@ INSERT INTO `products` (`id`, `title`, `category_id`, `location`, `body`, `excer
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.product_categories 結構
+DROP TABLE IF EXISTS `product_categories`;
 CREATE TABLE IF NOT EXISTS `product_categories` (
   `product_id` int(10) unsigned NOT NULL DEFAULT '0',
   `category_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -873,6 +895,7 @@ INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
 /*!40000 ALTER TABLE `product_categories` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.roles 結構
+DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -892,6 +915,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.settings 結構
+DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -922,6 +946,7 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.translations 結構
+DROP TABLE IF EXISTS `translations`;
 CREATE TABLE IF NOT EXISTS `translations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `table_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -972,6 +997,7 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.users 結構
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) unsigned DEFAULT NULL,
@@ -998,6 +1024,7 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- 傾印  資料表 homestead.user_roles 結構
+DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE IF NOT EXISTS `user_roles` (
   `user_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
