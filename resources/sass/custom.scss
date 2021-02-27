@@ -211,3 +211,38 @@ ul.desktopSearchList li a:hover {
   float:left;
   -webkit-transform:translateZ(0);
 }
+
+.showForPhone{
+  position: none;
+}
+
+// .bgWhite{
+//   background-color: #fff;
+// }
+
+/* For portrait, 直向 */
+@media screen and (orientation: portrait) {
+  .bgWhite {
+    background-color: #fff;
+  }
+  .level-98{
+    z-index: 98;
+  }
+}
+
+/* For landscape, 橫向 */
+
+@media screen and (orientation: landscape) {
+  .bgWhite {
+    background-color: #fff;
+  }
+  .level-98{
+    z-index: 98;
+  }
+}
+
+
+
+.level-98{
+  z-index: 98;
+}

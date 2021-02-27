@@ -38,9 +38,9 @@
         </nav>
 
         <div class="flex margin-top-phablet-12">
-          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
+          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
 
-          <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
+          <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
 
             <ul class="equal equalMobile margin-1">
               <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
@@ -69,10 +69,9 @@
                     <!-- <div class="  ae-3 fromBottom swiper-pagination" data-slider-id="82"></div> -->
                   @endif
                 </div>
-                <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
+                <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1" >
                   <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
-                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
-                    <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 productData">
+                    <h2 class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 ">
                       @if ($blog->year)
                         {{$blog->year}} 年
                       @endif
@@ -80,7 +79,8 @@
                       @if ($blog->month)
                         {{$blog->month}} 月
                       @endif
-                    </div>
+                    </h2>
+                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
                   </div>
                   {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
                   <div class="ae-6 fromRight left productcontent">
@@ -91,7 +91,7 @@
                 </div>
 
                 @foreach ($image_sets as $image)
-                  <div class="selected">
+                  <div class="selected clickable animated margin-bottom-3 ae-1 popupTrigger productImg" data-popup-id="75-1">
                     <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
                   </div>
                 @endforeach
@@ -101,7 +101,7 @@
                     <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">攝影師</h2>
                   </div>
                   {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
-                  <div class="ae-6 fromRight left productcontent">
+                  <div class="ae-6 fromRight left productcontent" >
                     <p class="large margin-bottom-3 opacity-8">
                       {{ $blog->photography }}
                     </p>
@@ -120,7 +120,7 @@
   <!-- <div class="background" style="background-image:url(assets/img/background/img-90.jpg)"></div> -->
 </section>
 
-<!-- Popup Gallery -->
+<!-- 照片彈窗 -->
 <div class="popup animated" data-popup-id="75-1">
   <div class="close right margin-top-10 margin-right-10"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
   <div class="content popupContent">
@@ -142,7 +142,7 @@
               @foreach ($image_sets as $k => $image)
                 @if($k==0)
                   <li class="selected">
-                    <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
+                    <img src="{{ Voyager::image( $image ) }}" alt="Image" />
                   </li>
                 @else
                   <li>

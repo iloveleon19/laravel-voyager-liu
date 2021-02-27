@@ -38,12 +38,12 @@
         </nav>
 
         <div class="flex margin-top-phablet-12">
-          <div class="col-6-12 col-desktop-1-2 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
+          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
 
-          <div class="col-6-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
+          <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
 
             <ul class="equal equalMobile margin-1">
-              <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
+              <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0" >
 
                 @php
                   $image_sets = json_decode($product->image_sets,true);
@@ -53,8 +53,8 @@
                 <div class="fix-12-12 relative swiper-container">
                   <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                     @foreach ($image_sets as $image)
-                      <div class="selected swiper-slide ">
-                        <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
+                      <div class="selected swiper-slide " >
+                        <img src="{{ Voyager::image( $image ) }}"  class="productImg" alt="iPhone" style="width: auto;height: 358px;"/>
                         {{-- style="width: auto;height: 358px;" --}}
                       </div>
                     @endforeach

@@ -28,8 +28,8 @@
     <div class="container">
       <div class="wrap noSpaces align-top">
 
-        {{-- 桌面版顯示 --}}
-        <div class="searchSide showForDesktop hideForMobile hideForTablet fix-2-12 left margin-top-6">
+        <!-- 桌面版顯示 -->
+        <div class="searchSide showForDesktop hideForMobile hideForTablet fix-2-12 left margin-top-6 level-98">  {{-- z-index解決 search input 白底問題 --}}
           <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
             <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;" name="search" placeholder="Search"/>
           </form>
@@ -38,18 +38,18 @@
           </ul>
         </div>
 
-        {{-- 平板版顯示 --}}
-        <div class="searchSide showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-6">
+        <!-- 平板版顯示 -->
+        <div class="searchSide showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-6 level-98"> {{-- z-index解決 search input 白底問題 --}}
           <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
-            <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;background-color:#e3e3e3;" name="search" placeholder="Search"/>
-          </form>
+            <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;background-color:#fff;" name="search" placeholder="Search"/>
+          </form>  {{-- background-color解決 search input 灰底問題 --}}
           <ul class="equal equalMobile desktopSearchList">
             {!! menu('product_search', 'layout.menu.search') !!}
           </ul>
         </div>
 
-        {{-- 手機版顯示 --}}
-       <nav class="searchSide showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12">
+        <!-- 手機版顯示 -->
+       <nav class="searchSide showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12" style="float:left;position:absolute; z-index:98;">
           <div class="sections">
               <div class="left">
                 <span class="actionButton sidebarTrigger searchButton" data-sidebar-id="2">Search
@@ -57,11 +57,11 @@
               </div>
           </div>
         </nav>
-
+        
         <div class="flex margin-top-phablet-13">
-          <div class="col-8-12 col-desktop-1-2 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
+          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
 
-          <div class="col-4-12 col-desktop-1-2 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
+          <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
             <ul class="flex equal equalMobile margin-1">
 
               @foreach ($products as $product)
