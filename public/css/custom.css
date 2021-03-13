@@ -153,6 +153,10 @@ ul.desktopSearchList li {
   cursor: pointer;
 }
 
+ul.desktopSearchList li a span {
+  white-space: nowrap;
+}
+
 ul.desktopSearchList li a:hover {
   color: #000000;
 }

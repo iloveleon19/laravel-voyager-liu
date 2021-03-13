@@ -29,7 +29,7 @@
       <div class="wrap noSpaces align-top">
 
         <!-- 桌面版顯示 -->
-        <div class="searchSide showForDesktop hideForMobile hideForTablet fix-2-12 left margin-top-6 level-98">  {{-- z-index解決 search input 白底問題 --}}
+        <div class="searchSide showForDesktop hideForPhone hideForTablet fix-2-12 left margin-top-6 level-98">  {{-- z-index解決 search input 白底問題 --}}
           <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
             <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;" name="search" placeholder="Search"/>
           </form>
@@ -39,7 +39,7 @@
         </div>
 
         <!-- 平板版顯示 -->
-        <div class="searchSide showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-6 level-98"> {{-- z-index解決 search input 白底問題 --}}
+        <div class="searchSide showForTablet hideForPhablet hideForPhone hideForDesktop fix-1-12 left margin-top-6 level-98"> {{-- z-index解決 search input 白底問題 --}}
           <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
             <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;background-color:#fff;" name="search" placeholder="Search"/>
           </form>  {{-- background-color解決 search input 灰底問題 --}}
@@ -49,7 +49,7 @@
         </div>
 
         <!-- 手機版顯示 -->
-       <nav class="searchSide showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12" style="float:left;position:absolute; z-index:98;">
+       <nav class="searchSide showForPhone showForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12" style="float:left;position:absolute; z-index:98;">
           <div class="sections">
               <div class="left">
                 <span class="actionButton sidebarTrigger searchButton" data-sidebar-id="2">Search
@@ -58,9 +58,8 @@
           </div>
         </nav>
         
-        <div class="flex margin-top-phablet-13">
-          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet showForPhablet hideForPhone"></div>
-
+        <div class="flex margin-top-phone-13 margin-top-phablet-13">
+          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet hideForPhablet hideForPhone"></div>
           <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
             <ul class="flex equal equalMobile margin-1">
 
@@ -158,6 +157,7 @@
 
       searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\" i]) { display: none; }";
       // beware of css injections!
+      $('.input-product-search').val($(this).val());
     });
 
 
@@ -172,26 +172,45 @@
       $('.item-101>ul>li>img').each(function(){
           maxW = $(this).width(maxW);
       });
+
+      // 處理 mb 顯示 search 轉換成 pc 事件
+      if($('nav.sidebar.white.left.visible input.input-product-search:visible').length>0){
+        if($('.actionButton.sidebarTrigger.searchButton:visible').length==0){
+          $('nav.sidebar.white.left.visible div.close').trigger('click');
+          $('input.input-product-search.desktopSearch:visible').focus();
+        }
+      }
+
+      // 處理 pc 顯示 search 轉換成 mb 事件
+      if($('.mask.opacity:visible').length>0){ // 看得見search的遮罩
+        if($('.actionButton.sidebarTrigger.searchButton:visible').length>0){
+          $('.mask.opacity:visible').hide();
+          $('.actionButton.sidebarTrigger.searchButton:visible').trigger('click');
+        }
+      }
     }
     resizeBg();
     $(window).resize(resizeBg).trigger("resize");
 
-    // $(".mobileSearch").focus(function(){
-    //   console.log("GG")
-    //   $(".mobileSearchList").css("display","inline");
-    //   $(".panel").css("display","none");
-    //   $(".hoverli").css("display","none");
-    //   $(".mobileSearchMenu").css("margin-top","0");
-      
-    // });
+    // // $(".mobileSearch").focus(function(){
+    // // //   console.log("GG")
+    // //   $(".mobileSearchList").css("display","inline");
+    // // //   $(".panel").css("display","none");
+    // // //   $(".hoverli").css("display","none");
+    // // //   $(".mobileSearchMenu").css("margin-top","0");
+    // // });
 
-    // $(".mobileSearch").blur(function(){
-    //   console.log("HERE")
-    //   $(".mobileSearchList").css("display","none");
-    //   $(".panel").css("display","inline");
-    //   $(".hoverli").css("display","inline");
-    //   $(".mobileSearchMenu").css("margin-top","70px");
-    // });
+    // // $(".mobileSearch").blur(function(){
+    // // //   console.log("HERE")
+    // //   $(".mobileSearchList").css("display","none");
+    // // //   $(".panel").css("display","inline");
+    // // //   $(".hoverli").css("display","inline");
+    // // //   $(".mobileSearchMenu").css("margin-top","70px");
+    // // });
+
+    // $('.searchButton').click(function(){
+      
+    // })
 
     $(".desktopSearch").focus(function(){
       $(".desktopSearchList").css("display","inline");

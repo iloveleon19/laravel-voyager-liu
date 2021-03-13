@@ -87,7 +87,7 @@
 
   </svg>
   <!-- 桌面版顯示 -->
-  <nav class="panel top showForDesktop hideForMobile hideForTablet">
+  <nav class="panel top showForDesktop hideForPhone hideForTablet">
     <div class="sections">
       <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
     </div>

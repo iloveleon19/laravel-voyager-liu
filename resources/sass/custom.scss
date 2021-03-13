@@ -17,6 +17,14 @@ html,body{
   min-width:150px;
 }
 
+// @media(max-width:769px){
+//   .slides-form input[type=text].input-product-search{
+//     font-size: 24px;
+//     border:none;
+//     min-width:125px;
+//   }
+// }
+
 .item-101{
   padding: 30px;
 }
@@ -145,10 +153,6 @@ body.slides {
 //   border-radius: 0 !important;
 // }
 
-ul.mobileSearchList {
-  // display: none;
-}
-
 ul.mobileSearchList li {
   text-align: left;
   font-size: 32px;
@@ -174,9 +178,29 @@ ul.desktopSearchList li {
   cursor: pointer;
 }
 
+ul.desktopSearchList li a span {
+  white-space: nowrap;
+}
+
 ul.desktopSearchList li a:hover {
   color: #000000;
 }
+
+// @media(max-width:769px){
+//   ul.desktopSearchList li {
+//     text-align: left;
+//     font-size: 18px;
+//     color: #999999;
+//     padding-top: 0px !important;
+//     padding-bottom: 0px !important;
+//     padding-left: 25px !important;
+//     line-height: 1.5;
+//     cursor: pointer;
+//   }
+//   ul.desktopSearchList li a:hover {
+//     color: #000000;
+//   }
+// }
 
 .searchButton {
   font-size: 27px;
