@@ -10,35 +10,10 @@
     <div class="container">
       <div class="wrap noSpaces align-top">
 
-        {{-- 桌面版顯示 --}}
-        <div class="showForDesktop hideForPhone hideForTablet fix-2-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
-          <ul class="equal equalMobile">
-            <li>
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1">作品</a>
-            </li>
-          </ul>
-        </div>
-
-        {{-- 平板版顯示 --}}
-        <div class="showForTablet hideForPhablet hideForPhone hideForDesktop fix-1-12 left margin-top-7 margin-left-3" style="float:left;position:fixed;-webkit-transform:translateZ(0);">
-          <ul class="equal equalMobile">
-            <li>
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1">作品</a>
-            </li>
-          </ul>
-        </div>
-
-        {{-- 手機版顯示 --}}
-        <nav class="showForPhone hideForPhablet hideForTablet showForPhablet hidden margin-top-phablet-7 fix-12-12 margin-left-3" style="float:left;position:absolute;">
-          <div class="sections">
-            <div class="left">
-              <a href="{{ route('menu.product',['slug' => $product->slug]) }}" class="back"><i class="fa fa-long-arrow-left"></i><span class="padding-left-1"></span>作品</a>
-            </div>
-          </div>
-        </nav>
+        @include('layout.product.item-breadcrumb', ['routeName' => 'menu.product'])
 
         <div class="flex margin-top-phone-12 margin-top-phablet-12">
-          <div class="col-8-12 col-tablet-2-5 col-phablet-1-4 showForDesktop showForTablet hideForPhablet hideForPhone"></div>
+          <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet hideForPhablet hideForPhone"></div>
           <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
 
             <ul class="equal equalMobile margin-1">
@@ -174,7 +149,22 @@
         disableOnInteraction: false,
       },
     loop : true,//循環
-    })
+  })
+
+
+  var resizeBg = function() {
+    // 處理 showForTablet 跟 showForPhablet 的交界判斷
+    if($('.menuSide.showForTablet:visible').length>0 && $('.menuSide.showForPhablet:visible').length>0){
+      $('.menuSide.showForPhablet:visible').find('div.sections').hide();
+    }
+
+    if($('.menuSide.showForTablet:visible').length==0 && $('.menuSide.showForPhablet:visible').length>0){
+      $('.menuSide.showForPhablet:visible').find('div.sections').show();
+    }
+  }
+
+  resizeBg();
+  $(window).resize(resizeBg).trigger("resize");
 
 </script>
 @endsection

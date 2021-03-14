@@ -1,24 +1,13 @@
 @extends('layout.master')
 
+@section('style')
+  <style id="search_style"></style>
+@endsection
+
 @section('title', $title)
 
-    <style id="search_style"></style>
-
 @section('nav_grid')
-    <nav class="sidebar white left col-12-12 padding-0" data-sidebar-id="2">
-        <div class="close"><svg>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-            </svg></div>
-        <div class="content padding-0">
-            <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
-                <input type="text" class="input-product-search" style="margin:0 !important;" name="search"
-                    placeholder="Search" />
-            </form>
-            {{-- <ul class="equal equalMobile mobileSearchList">
-      {!! menu('product_search', 'layout.menu.search') !!}
-    </ul> --}}
-        </div>
-    </nav>
+    @include('layout.product.mb-search', ['menuName' => null])
 @endsection
 
 @section('slide')
@@ -29,46 +18,13 @@
             <div class="container">
                 <div class="wrap noSpaces align-top">
 
-                    <!-- 桌面版顯示 -->
-                    <div class="searchSide showForDesktop hideForPhone hideForTablet fix-2-12 left margin-top-6 "
-                        style="z-index: 98;"> {{-- z-index解決 search input 白底問題 --}}
-                        <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
-                            <input type="text" class="input-product-search desktopSearch" style="margin:0 !important;"
-                                name="search" placeholder="Search" />
-                        </form>
-                        {{-- <ul class="equal equalMobile desktopSearchList">
-            {!! menu('product_search', 'layout.menu.search') !!}
-          </ul> --}}
-                    </div>
+                    @include('layout.product.search', ['menuName'=>null])
 
-                    <!-- 平板版顯示 -->
-                    <div class="searchSide showForTablet showForPhablet hideForPhone hideForDesktop fix-2-12 left margin-top-6"
-                        style="z-index: 98;"> {{-- z-index解決 search input 白底問題 --}}
-                        <form class="slides-form margin-left-1 margin-right-1" action="#" autocomplete="off">
-                            <input type="text" class="input-product-search desktopSearch"
-                                style="margin:0 !important;background-color:#fff;" name="search" placeholder="Search" />
-                        </form> {{-- background-color解決 search input 灰底問題 --}}
-                        {{-- <ul class="equal equalMobile desktopSearchList">
-            {!! menu('product_search', 'layout.menu.search') !!}
-          </ul> --}}
-                    </div>
-
-                    <!-- 手機版顯示 -->
-                    <nav class="searchSide showForPhone hideForPhablet hideForTablet hideForDesktop hidden margin-top-phablet-7 fix-12-12"
-                        style="float:left;position:absolute; z-index:98;">
-                        <div class="sections">
-                            <div class="left">
-                                <span class="actionButton sidebarTrigger searchButton" data-sidebar-id="2">Search
-                                </span>
-                            </div>
-                        </div>
-                    </nav>
-
-                    <div class="flex margin-top-phone-13">
-                        <div class="col-8-12 col-tablet-2-5 col-phablet-1-4 showForDesktop showForTablet showForPhablet hideForPhone">
+                    <div class="flex margin-top-phone-13 margin-top-phablet-13">
+                        <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet hideForPhablet hideForPhone">
                         </div>
 
-                        <div class="col-4-12 col-tablet-3-5 col-phablet-3-4 col-phone-1-1">
+                        <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
                             <ul class="flex equal equalMobile margin-1">
 
                                 @foreach ($blogs as $blog)
@@ -165,6 +121,8 @@
                 searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() +
                     "\" i]) { display: none; }";
                 // beware of css injections!
+
+                $('.input-product-search').val($(this).val());
             });
 
             var resizeBg = function() {
@@ -178,9 +136,36 @@
                 $('.item-101>ul>li>img').each(function() {
                     maxW = $(this).width(maxW);
                 });
+
+                // 處理 mb 顯示 search 轉換成 pc 事件
+                if($('nav.sidebar.white.left.visible input.input-product-search:visible').length>0){
+                    if($('.actionButton.sidebarTrigger.searchButton:visible').length==0){
+                    $('nav.sidebar.white.left.visible div.close').trigger('click');
+                    $('input.input-product-search.desktopSearch:visible').focus();
+                    }
+                }
+
+                // 處理 pc 顯示 search 轉換成 mb 事件
+                if($('.mask.opacity:visible').length>0){ // 看得見search的遮罩
+                    if($('.actionButton.sidebarTrigger.searchButton:visible').length>0){
+                    $('.mask.opacity:visible').hide();
+                    $('.actionButton.sidebarTrigger.searchButton:visible').trigger('click');
+                    }
+                }
+
+
+                // 處理 showForTablet 跟 showForPhablet 的交界判斷
+                if($('.searchSide.showForTablet:visible').length>0 && $('.searchSide.showForPhablet:visible').length>0){
+                    $('.searchSide.showForPhablet:visible').find('div.sections').hide();
+                }
+
+                if($('.searchSide.showForTablet:visible').length==0 && $('.searchSide.showForPhablet:visible').length>0){
+                    $('.searchSide.showForPhablet:visible').find('div.sections').show();
+                }
+
             }
-            // resizeBg();
-            // $(window).resize(resizeBg).trigger("resize");
+            resizeBg();
+            $(window).resize(resizeBg).trigger("resize");
             //  會影響圖片大小，先拿掉
 
             // $(".mobileSearch").focus(function(){

@@ -13,11 +13,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- 傾印 homestead 的資料庫結構
-CREATE DATABASE IF NOT EXISTS `homestead` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-USE `homestead`;
+-- 傾印 homestead_liu 的資料庫結構
+CREATE DATABASE IF NOT EXISTS `homestead_liu` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `homestead_liu`;
 
--- 傾印  資料表 homestead.banners 結構
+-- 傾印  資料表 homestead_liu.banners 結構
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   UNIQUE KEY `banner_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.banners 的資料：~6 rows (近似值)
+-- 正在傾印表格  homestead_liu.banners 的資料：~6 rows (近似值)
 DELETE FROM `banners`;
 /*!40000 ALTER TABLE `banners` DISABLE KEYS */;
 INSERT INTO `banners` (`id`, `slug`, `title`, `seo_title`, `image`, `status`, `order`, `created_at`, `created_by`, `updated_at`, `updated_by`, `meta_description`, `meta_keywords`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `banners` (`id`, `slug`, `title`, `seo_title`, `image`, `status`, `o
 	(9, 'home', '3', 'sf', 'banners/May2020/cP9Zl5mNzOENd2NNKDRL.jpg', 1, 1, '2020-05-17 08:16:30', 1, '2021-02-23 14:51:11', 1, NULL, NULL);
 /*!40000 ALTER TABLE `banners` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.blogs 結構
+-- 傾印  資料表 homestead_liu.blogs 結構
 CREATE TABLE IF NOT EXISTS `blogs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `blogs` (
   UNIQUE KEY `blogs_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.blogs 的資料：~5 rows (近似值)
+-- 正在傾印表格  homestead_liu.blogs 的資料：~5 rows (近似值)
 DELETE FROM `blogs`;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
 INSERT INTO `blogs` (`id`, `title`, `year`, `month`, `body`, `excerpt_image`, `photography`, `image_sets`, `slug`, `status`, `seo_title`, `meta_description`, `meta_keywords`, `order`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
@@ -83,7 +83,7 @@ INSERT INTO `blogs` (`id`, `title`, `year`, `month`, `body`, `excerpt_image`, `p
 	(8, '創業者要學會左手溫暖右手', '2018', '03', '<p><span style="color: #000000; font-family: Geneva, \'Helvetica Neue\', Helvetica, Arial, \'Microsoft JhengHei\', sans-serif; font-size: 13.6px;">&nbsp; &nbsp; 架構了一個網站寫好原始碼之後過來打分數，我是網頁設計課的同學，甚至他沒有出席過任何一堂課，老師可不可以補交？在他們當然早就看明，有人又不相關的說一時議論沸騰起來，乙感嘆地說，一類的試筆詩，也分得出處處瀦留的水光，是黑暗的晚上，風雨又調和著節奏，現在只就所謂有相當文化的根據，行動上也有些忙碌，下半天的談判，不曉得是追慕不返母親的慈愛，能夠合官廳的意思，他倆人中的一個，就尋不出別的原因？</span></p>\r\n<p><span style="color: #000000; font-family: Geneva, \'Helvetica Neue\', Helvetica, Arial, \'Microsoft JhengHei\', sans-serif; font-size: 13.6px;">&nbsp; &nbsp; 還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴，還不賴。除了天生顢頇的，花草的顏色與香息裡尋得？含著眼淚，結束在此刻，殞落的、中斷，隨夢境睡去、一條孤單的走廊，oh，啦答；我好想你，最怕空氣突然安靜，再荒唐，我的電話費比你還兇、給我一個讚oh，越傷人了、在路上會&shy;遇見怎樣的穹蒼？警調監視畫面，無照騎機車出遊，A-Rod湊熱鬧︰當我室友吧！</span></p>', 'blogs/February2021/H45XiFMhVTSaqqWaCY7k.jpeg', '林大白', '["blogs/test/5aab5a1e27e37.jpg","blogs/test/909611433_m.jpg","blogs/test/bfcda9868663b202e401a4e9a8713c89.jpg","blogs/test/4525036.jpg"]', '創業者', 1, '創業者', '創業者', '創業者', NULL, 1, NULL, '2021-02-26 06:16:33', '2021-02-26 06:16:33');
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.blog_categories 結構
+-- 傾印  資料表 homestead_liu.blog_categories 結構
 CREATE TABLE IF NOT EXISTS `blog_categories` (
   `blog_id` int(10) unsigned NOT NULL DEFAULT '0',
   `category_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -94,14 +94,14 @@ CREATE TABLE IF NOT EXISTS `blog_categories` (
   CONSTRAINT `blog_categories_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.blog_categories 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.blog_categories 的資料：~0 rows (近似值)
 DELETE FROM `blog_categories`;
 /*!40000 ALTER TABLE `blog_categories` DISABLE KEYS */;
 INSERT INTO `blog_categories` (`blog_id`, `category_id`) VALUES
 	(1, 1);
 /*!40000 ALTER TABLE `blog_categories` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.categories 結構
+-- 傾印  資料表 homestead_liu.categories 結構
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned DEFAULT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.categories 的資料：~2 rows (近似值)
+-- 正在傾印表格  homestead_liu.categories 的資料：~2 rows (近似值)
 DELETE FROM `categories`;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
@@ -124,7 +124,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 	(3, NULL, 1, '標籤測試', 'test', '2021-02-03 14:22:10', '2021-02-03 14:22:10');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.data_rows 結構
+-- 傾印  資料表 homestead_liu.data_rows 結構
 CREATE TABLE IF NOT EXISTS `data_rows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `data_type_id` int(10) unsigned NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `data_rows` (
   CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.data_rows 的資料：~150 rows (近似值)
+-- 正在傾印表格  homestead_liu.data_rows 的資料：~150 rows (近似值)
 DELETE FROM `data_rows`;
 /*!40000 ALTER TABLE `data_rows` DISABLE KEYS */;
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
@@ -300,7 +300,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 	(166, 14, 'month', 'text', 'Month', 0, 1, 1, 1, 1, 1, '{}', 4);
 /*!40000 ALTER TABLE `data_rows` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.data_types 結構
+-- 傾印  資料表 homestead_liu.data_types 結構
 CREATE TABLE IF NOT EXISTS `data_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `data_types` (
   UNIQUE KEY `data_types_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.data_types 的資料：~12 rows (近似值)
+-- 正在傾印表格  homestead_liu.data_types 的資料：~12 rows (近似值)
 DELETE FROM `data_types`;
 /*!40000 ALTER TABLE `data_types` DISABLE KEYS */;
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
@@ -340,7 +340,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 	(16, 'patents', 'patents', '專利', '專利群', 'voyager-rocket', 'App\\Patent', NULL, NULL, NULL, 1, 1, '{"order_column":"order","order_display_column":"title","order_direction":"asc","default_search_key":null,"scope":null}', '2021-02-18 02:29:47', '2021-02-19 06:01:32');
 /*!40000 ALTER TABLE `data_types` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.failed_jobs 結構
+-- 傾印  資料表 homestead_liu.failed_jobs 結構
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -351,12 +351,12 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.failed_jobs 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.failed_jobs 的資料：~0 rows (近似值)
 DELETE FROM `failed_jobs`;
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.members 結構
+-- 傾印  資料表 homestead_liu.members 結構
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -373,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.members 的資料：~5 rows (近似值)
+-- 正在傾印表格  homestead_liu.members 的資料：~5 rows (近似值)
 DELETE FROM `members`;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
 INSERT INTO `members` (`id`, `name`, `intro`, `order`, `status`, `email`, `facebook`, `instagram`, `twitter`, `created_at`, `updated_at`, `photo`) VALUES
@@ -384,7 +384,7 @@ INSERT INTO `members` (`id`, `name`, `intro`, `order`, `status`, `email`, `faceb
 	(6, '測試人員', '<p>專長測試</p>', 1, 1, 'admin@admin.com', NULL, NULL, NULL, '2021-02-04 14:41:00', '2021-02-04 14:41:58', 'members/February2021/D4wZdbBZ3ehJaHtUW6pW.jpg');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.menus 結構
+-- 傾印  資料表 homestead_liu.menus 結構
 CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -394,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   UNIQUE KEY `menus_name_unique` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.menus 的資料：~3 rows (近似值)
+-- 正在傾印表格  homestead_liu.menus 的資料：~3 rows (近似值)
 DELETE FROM `menus`;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -403,7 +403,7 @@ INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'product_search', '2020-05-29 15:23:10', '2020-05-29 15:23:10');
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.menu_items 結構
+-- 傾印  資料表 homestead_liu.menu_items 結構
 CREATE TABLE IF NOT EXISTS `menu_items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menu_id` int(10) unsigned DEFAULT NULL,
@@ -423,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.menu_items 的資料：~34 rows (近似值)
+-- 正在傾印表格  homestead_liu.menu_items 的資料：~34 rows (近似值)
 DELETE FROM `menu_items`;
 /*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
@@ -463,7 +463,7 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 	(40, 1, '專利', '', '_self', 'voyager-rocket', '#000000', NULL, 15, '2021-02-18 02:29:47', '2021-02-19 02:01:07', 'voyager.patents.index', 'null');
 /*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.migrations 結構
+-- 傾印  資料表 homestead_liu.migrations 結構
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -471,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.migrations 的資料：~26 rows (近似值)
+-- 正在傾印表格  homestead_liu.migrations 的資料：~26 rows (近似值)
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -503,7 +503,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(26, '2017_04_11_000000_alter_post_nullable_fields_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.office_intros 結構
+-- 傾印  資料表 homestead_liu.office_intros 結構
 CREATE TABLE IF NOT EXISTS `office_intros` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -523,14 +523,14 @@ CREATE TABLE IF NOT EXISTS `office_intros` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.office_intros 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.office_intros 的資料：~0 rows (近似值)
 DELETE FROM `office_intros`;
 /*!40000 ALTER TABLE `office_intros` DISABLE KEYS */;
 INSERT INTO `office_intros` (`id`, `title`, `body`, `show_patent`, `show_partner`, `show_partner_image`, `show_partner_social`, `show_boss_image`, `boss_id`, `facebook`, `meta_description`, `meta_keywords`, `seo_title`, `created_at`, `updated_at`) VALUES
 	(1, '劉承鑫建築事務所', '<p><span style="color: #202020; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 22px; background-color: rgba(255, 255, 255, 0.85);">To create anything&ndash;whether a short story or a magazine profile or a film or a sitcom&ndash;is to believe, if only momentarily, you are capable of magic.</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style="color: #202020; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 22px; background-color: rgba(255, 255, 255, 0.85);">To create anything&ndash;whether a short story or a magazine profile or a film or a sitcom&ndash;is to believe, if only momentarily, you are capable of magic.</span></p>', 1, 1, 1, 1, 1, 5, 'https://www.facebook.com/chenghsinliu0930', NULL, NULL, NULL, '2020-05-23 09:14:00', '2021-02-18 01:45:30');
 /*!40000 ALTER TABLE `office_intros` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.office_intro_members 結構
+-- 傾印  資料表 homestead_liu.office_intro_members 結構
 CREATE TABLE IF NOT EXISTS `office_intro_members` (
   `office_intro_id` int(10) unsigned NOT NULL DEFAULT '0',
   `member_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -541,7 +541,7 @@ CREATE TABLE IF NOT EXISTS `office_intro_members` (
   CONSTRAINT `office_intro_members_office_intro_id_foreign` FOREIGN KEY (`office_intro_id`) REFERENCES `office_intros` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.office_intro_members 的資料：~5 rows (近似值)
+-- 正在傾印表格  homestead_liu.office_intro_members 的資料：~5 rows (近似值)
 DELETE FROM `office_intro_members`;
 /*!40000 ALTER TABLE `office_intro_members` DISABLE KEYS */;
 INSERT INTO `office_intro_members` (`office_intro_id`, `member_id`) VALUES
@@ -552,7 +552,7 @@ INSERT INTO `office_intro_members` (`office_intro_id`, `member_id`) VALUES
 	(1, 6);
 /*!40000 ALTER TABLE `office_intro_members` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.office_intro_patents 結構
+-- 傾印  資料表 homestead_liu.office_intro_patents 結構
 CREATE TABLE IF NOT EXISTS `office_intro_patents` (
   `office_intro_id` int(10) unsigned NOT NULL,
   `patent_id` int(10) unsigned NOT NULL,
@@ -563,7 +563,7 @@ CREATE TABLE IF NOT EXISTS `office_intro_patents` (
   CONSTRAINT `office_intro_patents_patent_id_foreign` FOREIGN KEY (`patent_id`) REFERENCES `patents` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 正在傾印表格  homestead.office_intro_patents 的資料：~2 rows (近似值)
+-- 正在傾印表格  homestead_liu.office_intro_patents 的資料：~2 rows (近似值)
 DELETE FROM `office_intro_patents`;
 /*!40000 ALTER TABLE `office_intro_patents` DISABLE KEYS */;
 INSERT INTO `office_intro_patents` (`office_intro_id`, `patent_id`) VALUES
@@ -571,7 +571,7 @@ INSERT INTO `office_intro_patents` (`office_intro_id`, `patent_id`) VALUES
 	(1, 2);
 /*!40000 ALTER TABLE `office_intro_patents` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.pages 結構
+-- 傾印  資料表 homestead_liu.pages 結構
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
@@ -589,14 +589,14 @@ CREATE TABLE IF NOT EXISTS `pages` (
   UNIQUE KEY `pages_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.pages 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.pages 的資料：~0 rows (近似值)
 DELETE FROM `pages`;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 0, 'Hello World', 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.', '<p>Hello World. Scallywag grog swab Cat o\'nine tails scuttle rigging hardtack cable nipper Yellow Jack. Handsomely spirits knave lad killick landlubber or just lubber deadlights chantey pinnace crack Jennys tea cup. Provost long clothes black spot Yellow Jack bilged on her anchor league lateen sail case shot lee tackle.</p>\n<p>Ballast spirits fluke topmast me quarterdeck schooner landlubber or just lubber gabion belaying pin. Pinnace stern galleon starboard warp carouser to go on account dance the hempen jig jolly boat measured fer yer chains. Man-of-war fire in the hole nipperkin handsomely doubloon barkadeer Brethren of the Coast gibbet driver squiffy.</p>', 'pages/page1.jpg', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', 'ACTIVE', '2020-05-01 10:53:21', '2020-05-01 10:53:21');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.patents 結構
+-- 傾印  資料表 homestead_liu.patents 結構
 CREATE TABLE IF NOT EXISTS `patents` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -609,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `patents` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.patents 的資料：~2 rows (近似值)
+-- 正在傾印表格  homestead_liu.patents 的資料：~2 rows (近似值)
 DELETE FROM `patents`;
 /*!40000 ALTER TABLE `patents` DISABLE KEYS */;
 INSERT INTO `patents` (`id`, `title`, `image_sets`, `desrc`, `order`, `status`, `created_at`, `updated_at`) VALUES
@@ -617,7 +617,7 @@ INSERT INTO `patents` (`id`, `title`, `image_sets`, `desrc`, `order`, `status`, 
 	(2, '獨到技術', '["patents/c92f9082ede887eb60f49de4cc6266a7.jpg","patents/VS4Mac_Sharing2x.png","patents/astronaut_swing_bouquet_154206_1920x1080.jpg"]', 'test', 22, 1, '2021-02-18 02:35:22', '2021-02-18 09:34:58');
 /*!40000 ALTER TABLE `patents` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.permissions 結構
+-- 傾印  資料表 homestead_liu.permissions 結構
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -628,7 +628,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   KEY `permissions_key_index` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.permissions 的資料：~71 rows (近似值)
+-- 正在傾印表格  homestead_liu.permissions 的資料：~71 rows (近似值)
 DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
@@ -705,7 +705,7 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 	(86, 'delete_patents', 'patents', '2021-02-18 02:29:47', '2021-02-18 02:29:47');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.permission_role 結構
+-- 傾印  資料表 homestead_liu.permission_role 結構
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
@@ -716,7 +716,7 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
   CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.permission_role 的資料：~71 rows (近似值)
+-- 正在傾印表格  homestead_liu.permission_role 的資料：~71 rows (近似值)
 DELETE FROM `permission_role`;
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
@@ -793,7 +793,7 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 	(86, 1);
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.posts 結構
+-- 傾印  資料表 homestead_liu.posts 結構
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
@@ -814,7 +814,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   UNIQUE KEY `posts_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.posts 的資料：~4 rows (近似值)
+-- 正在傾印表格  homestead_liu.posts 的資料：~4 rows (近似值)
 DELETE FROM `posts`;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
@@ -824,7 +824,7 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 	(4, 0, NULL, 'Yarr Post', NULL, 'Reef sails nipperkin bring a spring upon her cable coffer jury mast spike marooned Pieces of Eight poop deck pillage. Clipper driver coxswain galleon hempen halter come about pressgang gangplank boatswain swing the lead. Nipperkin yard skysail swab lanyard Blimey bilge water ho quarter Buccaneer.', '<p>Swab deadlights Buccaneer fire ship square-rigged dance the hempen jig weigh anchor cackle fruit grog furl. Crack Jennys tea cup chase guns pressgang hearties spirits hogshead Gold Road six pounders fathom measured fer yer chains. Main sheet provost come about trysail barkadeer crimp scuttle mizzenmast brig plunder.</p>\n<p>Mizzen league keelhaul galleon tender cog chase Barbary Coast doubloon crack Jennys tea cup. Blow the man down lugsail fire ship pinnace cackle fruit line warp Admiral of the Black strike colors doubloon. Tackle Jack Ketch come about crimp rum draft scuppers run a shot across the bow haul wind maroon.</p>\n<p>Interloper heave down list driver pressgang holystone scuppers tackle scallywag bilged on her anchor. Jack Tar interloper draught grapple mizzenmast hulk knave cable transom hogshead. Gaff pillage to go on account grog aft chase guns piracy yardarm knave clap of thunder.</p>', 'posts/post4.jpg', 'yarr-post', 'this be a meta descript', 'keyword1, keyword2, keyword3', 'PUBLISHED', 0, '2020-05-01 10:53:21', '2020-05-01 10:53:21');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.products 結構
+-- 傾印  資料表 homestead_liu.products 結構
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -849,7 +849,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   UNIQUE KEY `products_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.products 的資料：~5 rows (近似值)
+-- 正在傾印表格  homestead_liu.products 的資料：~5 rows (近似值)
 DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `title`, `category_id`, `location`, `body`, `excerpt_image`, `image_sets`, `slug`, `status`, `seo_title`, `meta_description`, `meta_keywords`, `start_year`, `finish_year`, `order`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
@@ -860,7 +860,7 @@ INSERT INTO `products` (`id`, `title`, `category_id`, `location`, `body`, `excer
 	(8, '宜蘭大樓', NULL, '宜廉', '<p><span style="color: #000000; font-family: Geneva, \'Helvetica Neue\', Helvetica, Arial, \'Microsoft JhengHei\', sans-serif; font-size: 13.6px;">&nbsp; &nbsp; 他們在平時，那一個兒童不天真可愛，因為空間的黑暗，那人道，猶在戀著夢之國的快樂，乃和以森羅殿的還形復體水，不是皆有學問有地位的人士，日月不相望的什麼新曆法，這是什麼言語？沒有年歲，孩子們的事，也因為能得到較多的金錢，說得很高興似的。孩子們辯說，因為一片暗黑，汝算不到，因為這是親戚間，在家裡有壓歲錢的分賜，堅固地信賴、互相提攜；</span></p>\r\n<p><span style="color: #000000; font-family: Geneva, \'Helvetica Neue\', Helvetica, Arial, \'Microsoft JhengHei\', sans-serif; font-size: 13.6px;">&nbsp; &nbsp; 由本能的衝動，他們偏不採用，但在手面趁吃人，將要失去明視的效力，統我的一生到現在，少年已去金難得，不像現時剝奪得淨盡，通溶化在月光裡，誰甘白受人家的欺負，花去了幾千塊，甘失掉了麵皮！看見映在地上自己的影，這天大的奇變，溺人的水窪，觸進人們的肌膚，忽從風雨合奏的進行曲中，富豪是先天所賦與，導發反抗力的火戰。和別的其餘的一日，好啊，放射到地平線以外，隔晚，人們不預承認，怕大家都記不起了，可不知道那就是培養反抗心的源泉，農民播種犁田，奉行正朔，翌日，現在不是糴不到半斗米？那黑暗雖在幾百層的地底，因為久慣於暗黑的眼睛，就說不關什麼，西門那賣點心的老人，同在這顆地球上，失了伴侶的他，但誰敢信這事實裡面，就說不關什麼，一時看鬧熱的人，說了不少好話，不能成功，早幾點鐘解決，行動上也有些忙碌，失了伴侶的他，又一人說。</span></p>', 'products/February2021/OEn6sQWQCVafnhUJgyQe.jpg', '["products/test-home/天賞大願.jpg","products/test-home/images (2).jpeg","products/test-home/images (3).jpeg"]', 'aaa', 1, '宜蘭,大樓', NULL, NULL, '2006', '2018', NULL, '2021-02-26 03:34:41', 1, '2021-02-26 03:34:41', NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.product_categories 結構
+-- 傾印  資料表 homestead_liu.product_categories 結構
 CREATE TABLE IF NOT EXISTS `product_categories` (
   `product_id` int(10) unsigned NOT NULL DEFAULT '0',
   `category_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -871,7 +871,7 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   CONSTRAINT `product_categories_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.product_categories 的資料：~5 rows (近似值)
+-- 正在傾印表格  homestead_liu.product_categories 的資料：~5 rows (近似值)
 DELETE FROM `product_categories`;
 /*!40000 ALTER TABLE `product_categories` DISABLE KEYS */;
 INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
@@ -882,7 +882,7 @@ INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
 	(8, 3);
 /*!40000 ALTER TABLE `product_categories` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.roles 結構
+-- 傾印  資料表 homestead_liu.roles 結構
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -893,7 +893,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `roles_name_unique` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.roles 的資料：~2 rows (近似值)
+-- 正在傾印表格  homestead_liu.roles 的資料：~2 rows (近似值)
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
@@ -901,7 +901,7 @@ INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) V
 	(2, 'user', 'Normal User', '2020-05-01 10:53:20', '2020-05-01 10:53:20');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.settings 結構
+-- 傾印  資料表 homestead_liu.settings 結構
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -915,7 +915,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   UNIQUE KEY `settings_key_unique` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.settings 的資料：~10 rows (近似值)
+-- 正在傾印表格  homestead_liu.settings 的資料：~10 rows (近似值)
 DELETE FROM `settings`;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
@@ -931,7 +931,7 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 	(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', '', '', 'text', 1, 'Admin');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.translations 結構
+-- 傾印  資料表 homestead_liu.translations 結構
 CREATE TABLE IF NOT EXISTS `translations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `table_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -945,7 +945,7 @@ CREATE TABLE IF NOT EXISTS `translations` (
   UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.translations 的資料：~30 rows (近似值)
+-- 正在傾印表格  homestead_liu.translations 的資料：~30 rows (近似值)
 DELETE FROM `translations`;
 /*!40000 ALTER TABLE `translations` DISABLE KEYS */;
 INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `locale`, `value`, `created_at`, `updated_at`) VALUES
@@ -981,7 +981,7 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 	(30, 'menu_items', 'title', 10, 'pt', 'Configurações', '2020-05-01 10:53:21', '2020-05-01 10:53:21');
 /*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.users 結構
+-- 傾印  資料表 homestead_liu.users 結構
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) unsigned DEFAULT NULL,
@@ -1000,14 +1000,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.users 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.users 的資料：~0 rows (近似值)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$IzlBBOOSUzKsepRos/xRrOq.ERhFB6Ja3gnUmJmRP5sCbSS/5OYbq', 'KTUXCSfmm9MAS48tNv4g8fSmQevQmIjWsa2Ol8hAGmxTnlxdotA1MAu6ZcVi', '{"locale":"zh_TW"}', '2020-05-01 10:53:21', '2020-05-03 11:00:30');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- 傾印  資料表 homestead.user_roles 結構
+-- 傾印  資料表 homestead_liu.user_roles 結構
 CREATE TABLE IF NOT EXISTS `user_roles` (
   `user_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
   CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 正在傾印表格  homestead.user_roles 的資料：~0 rows (近似值)
+-- 正在傾印表格  homestead_liu.user_roles 的資料：~0 rows (近似值)
 DELETE FROM `user_roles`;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;

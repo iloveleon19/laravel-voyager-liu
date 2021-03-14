@@ -15,6 +15,8 @@
   <script src="{{mix('/js/plugins.js')}}" type="text/javascript"></script>
   <script src="{{mix('/js/swiper.min.js')}}" type="text/javascript"></script>
 
+  @yield('style')
+
   <title>@yield('title')</title>
 </head>
 <body class="slides chain animated">
