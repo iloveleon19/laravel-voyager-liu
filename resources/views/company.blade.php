@@ -2,6 +2,22 @@
 
 @section('title', $title)
 
+@section('nav_menu')
+  <!-- 桌面版顯示 -->
+  <nav class="panel top showForDesktop showForTablet hideForPhone hideForPhablet">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+
+  <!-- 手機版顯示，首頁以外的用js加上 bgWhite 這個class -->
+  <nav class="panel top showForPhone showForPhablet hideForTablet hideForDesktop ">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+@endsection
+
 @section('slide')
 
 <section class="slide fade-6 kenBurns whiteSlide">
@@ -49,7 +65,7 @@
                       <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-{{$k+1}}" data-slider-id="82">
                         @foreach ($image_sets as $j => $image)
                           <div class="selected swiper-slide ">
-                            <img src="{{ Voyager::image( $image ) }}" style="width: 100%;" class="productImg" alt="iPhone"/>
+                            <img src="{{ Voyager::image( $image ) }}" style="width: 100%;" class="productImg" alt="iPhone" data-img-id="{{$j}}"/>
                             {{-- style="width: auto;height: 358px;" --}}
                           </div>
                         @endforeach
@@ -77,50 +93,50 @@
         <!-- 合作夥伴 -->
         @if($officeIntro->show_partner)
 
-        <div class="fix-12-12 toCenter margin-top-5">
-          <h1 class="smaller margin-bottom-3 ae-1">合作夥伴</h1>
-          <ul class="flex fixedSpaces later">
+          <div class="fix-12-12 toCenter margin-top-5">
+            <h1 class="smaller margin-bottom-3 ae-1">合作夥伴</h1>
+            <ul class="flex fixedSpaces later">
 
-            @foreach($partners as $partner)
-              <li class="col-3-12 ae-3 fromCenter">
+              @foreach($partners as $partner)
+                <li class="col-3-12 ae-3 fromCenter">
 
-                @if($officeIntro->show_partner_image)
-                  <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" width="128" alt="{{$partner->name}}"/>
-                @endif
+                  @if($officeIntro->show_partner_image)
+                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" width="128" alt="{{$partner->name}}"/>
+                  @endif
 
-                <div class="fix-3-12">
-                  <h4 class="smallest margin-bottom-1">{{ $partner->name }}</h4>
-                  <p class="left"><span class="opacity-8">{!! $partner->intro !!}</span></p>
-                </div>
-
-                @if($officeIntro->show_partner_social)
-                  <div class="fix-3-12 equalElement">
-                    <ul class="social-circles">
-
-                      @if($partner->email)
-                        <li><a class="social-mail" href="mailto:{{$partner->email}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
-                      @endif
-
-                      @if($partner->facebook)
-                        <li><a class="social-facebook" href="{{$partner->facebook}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
-                      @endif
-
-                      @if($partner->instagram)
-                        <li><a class="social-instagram" href="{{$partner->instagram}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-                      @endif
-
-                      @if($partner->twitter)
-                        <li><a class="social-twitter" href="{{$partner->twitter}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-                      @endif
-
-                    </ul>
+                  <div class="fix-3-12">
+                    <h4 class="smallest margin-bottom-1">{{ $partner->name }}</h4>
+                    <p class="left"><span class="opacity-8">{!! $partner->intro !!}</span></p>
                   </div>
-                @endif
 
-              </li>
-            @endforeach
-          </ul>
-        </div>
+                  @if($officeIntro->show_partner_social)
+                    <div class="fix-3-12 equalElement">
+                      <ul class="social-circles">
+
+                        @if($partner->email)
+                          <li><a class="social-mail" href="mailto:{{$partner->email}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mail"></use></svg></a></li>
+                        @endif
+
+                        @if($partner->facebook)
+                          <li><a class="social-facebook" href="{{$partner->facebook}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook2"></use></svg></a></li>
+                        @endif
+
+                        @if($partner->instagram)
+                          <li><a class="social-instagram" href="{{$partner->instagram}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
+                        @endif
+
+                        @if($partner->twitter)
+                          <li><a class="social-twitter" href="{{$partner->twitter}}" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
+                        @endif
+
+                      </ul>
+                    </div>
+                  @endif
+
+                </li>
+              @endforeach
+            </ul>
+          </div>
 
         @endif
 
@@ -151,17 +167,11 @@
                 @endif
                 <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-{{$k+1}}" style="display: inline-block;" >
                   @foreach ($image_sets as $j => $image)
-                    @if($j==0)
-                      <li class="selected">
-                        <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
-                      </li>
-                    @else
-                      <li>
-                        <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
-                      </li>
-                    @endif
+                    <li class="select-{{$j}}">
+                      <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
+                    </li>
                   @endforeach
-                  @if($j==0)
+                  @if(isset($j) && $j==0)
                     <li>
                       <img src="{{ Voyager::image( $image_sets[$j] ) }}" alt="Image"/>
                     </li>
@@ -181,7 +191,6 @@
 @section('jscode')
 <script>
   var mySwiper = new Swiper('.swiper-container', {//初始化Swiper
-    
     slidesPerView: 1,
     spaceBetween: 30,
     keyboard: {
@@ -200,6 +209,22 @@
         disableOnInteraction: false,
       },
     loop : true, //循環
-    })
+  })
+
+  $('.popupTrigger.productImg[data-popup-id^="75-"] img.productImg').click(function(){
+    mySwiper.autoplay.stop();
+
+    var popupId = $(this).closest('.popupTrigger.productImg').data('popup-id');
+
+    $('ul.slider.popupContent[data-slider-id="'+popupId+'"] li').removeClass('selected');
+    var id = $(this).data('img-id');
+    var className = 'select-'+id;
+    $('ul.slider.popupContent[data-slider-id="'+popupId+'"] li.'+className).addClass('selected');
+  })
+
+  $('.popup.animated>.close').click(function(){
+    mySwiper.autoplay.start();
+  })
+
 </script>
 @endsection

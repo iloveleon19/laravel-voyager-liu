@@ -45,7 +45,7 @@
                   <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                     @foreach ($image_sets as $k => $image)
                       <div class="selected {{$slideClass}}">
-                        <img src="{{ Voyager::image( $image ) }}"  class="productImg" alt="iPhone" style="width: auto;height: 358px;" data-img-id='{{$k}}'/>
+                        <img src="{{ Voyager::image( $image ) }}"  class="productImg" alt="iPhone" style="width: auto;height: 358px;" data-img-id="{{$k}}"/>
                         {{-- style="width: auto;height: 358px;" --}}
                       </div>
                     @endforeach
@@ -158,7 +158,7 @@
     autoplay: {
         delay: 8000,
         disableOnInteraction: false,
-      },
+    },
     loop : true,//循環
   })
 

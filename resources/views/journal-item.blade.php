@@ -71,7 +71,7 @@
 
                 @foreach ($image_sets as $k => $image)
                   <div class="selected clickable animated margin-bottom-3 ae-1 popupTrigger productImg" data-popup-id="75-1">
-                    <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone" data-img-id='{{$k}}'/>
+                    <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone" data-img-id="{{$k}}"/>
                   </div>
                 @endforeach
 
@@ -184,7 +184,7 @@
   })
 
   $('.popupTrigger.productImg[data-popup-id="75-1"] img.productImg').click(function(){
-    mySwiper.autoplay.stop();
+    // mySwiper.autoplay.stop();
 
     $('ul.slider.popupContent[data-slider-id="75-1"] li').removeClass('selected');
     var id = $(this).data('img-id');
@@ -192,9 +192,9 @@
     $('ul.slider.popupContent[data-slider-id="75-1"] li.'+className).addClass('selected');
   })
 
-  $('.popup.animated>.close').click(function(){
-    mySwiper.autoplay.start();
-  })
+  // $('.popup.animated>.close').click(function(){
+  //   mySwiper.autoplay.start();
+  // })
 
   var resizeBg = function() {
     // 處理 showForTablet 跟 showForPhablet 的交界判斷
