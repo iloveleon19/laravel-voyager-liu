@@ -2,6 +2,22 @@
 
 @section('title', $title)
 
+@section('nav_menu')
+  <!-- 桌面版顯示 -->
+  <nav class="panel top showForDesktop showForTablet hideForPhone hideForPhablet">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+
+  <!-- 手機版顯示，首頁以外的用js加上 bgWhite 這個class -->
+  <nav class="panel top bgWhite showForPhone showForPhablet hideForTablet hideForDesktop ">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+@endsection
+
 @section('slide')
 
 <!-- one -->
@@ -10,7 +26,7 @@
     <div class="container">
       <div class="wrap noSpaces align-top">
 
-        @include('layout.product.item-breadcrumb', ['routeName' => 'menu.journal'])
+        @include('layout.product.item-breadcrumb', ['routeName' => 'menu.journal','groupName'=>'日誌'])
 
         <div class="flex margin-top-phone-12 margin-top-phablet-12">
           <div class="col-8-12 col-tablet-2-5 showForDesktop showForTablet hideForPhablet hideForPhone"></div>
@@ -19,16 +35,16 @@
             <ul class="equal equalMobile margin-1">
               <li class="fix-12-12 margin-right-0 padding-top-2 padding-right-2 padding-top-phablet-0 padding-right-phablet-0">
 
-                <div class="fix-12-12 relative swiper-container">
+                <div class="fix-12-12 relative">
                   <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-0" data-slider-id="82">
 
-                    <div class="selected">
+                    <div class="selected img-center">
                       <img src="{{ Voyager::image( $blog->excerpt_image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
                     </div>
                   </div>
 
                 </div>
-                <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1" >
+                <div class="fix-12-12 margin-top-1" >
                   <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
                     <h2 class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 ">
                       @if ($blog->year)
@@ -42,10 +58,10 @@
                     <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
                   </div>
                   {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
-                  <div class="ae-6 fromRight left productcontent">
-                    <p class="large margin-bottom-3 opacity-8">
+                  <div class="ae-6 fromRight left productcontent margin-top-3">
+                    <div class="post-desc large margin-bottom-3 opacity-8">
                       {!! $blog->body !!}
-                    </p>
+                    </div>
                   </div>
                 </div>
 
@@ -60,12 +76,12 @@
                 @endforeach
 
                 @if($blog->photography)
-                  <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1">
+                  <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1 photography-desc">
                     <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
                       <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">攝影</h2>
                     </div>
                     {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
-                    <div class="ae-6 fromRight left productcontent" >
+                    <div class="ae-6 fromRight left" >
                       <p class="large margin-bottom-3 opacity-8">
                         {{ $blog->photography }}
                       </p>
@@ -132,7 +148,7 @@
                   </li>
               @endforeach
 
-              @if($k==0)
+              @if(isset($k) && $k==0)
                 <li>
                   <img src="{{ Voyager::image( $image_sets[$k] ) }}" alt="Image"/>
                 </li>
@@ -168,10 +184,16 @@
   })
 
   $('.popupTrigger.productImg[data-popup-id="75-1"] img.productImg').click(function(){
+    mySwiper.autoplay.stop();
+
     $('ul.slider.popupContent[data-slider-id="75-1"] li').removeClass('selected');
     var id = $(this).data('img-id');
     var className = 'select-'+id;
     $('ul.slider.popupContent[data-slider-id="75-1"] li.'+className).addClass('selected');
+  })
+
+  $('.popup.animated>.close').click(function(){
+    mySwiper.autoplay.start();
   })
 
   var resizeBg = function() {

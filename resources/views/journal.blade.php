@@ -6,6 +6,22 @@
 
 @section('title', $title)
 
+@section('nav_menu')
+  <!-- 桌面版顯示 -->
+  <nav class="panel top showForDesktop showForTablet hideForPhone hideForPhablet">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+
+  <!-- 手機版顯示，首頁以外的用js加上 bgWhite 這個class -->
+  <nav class="panel top bgWhite showForPhone showForPhablet hideForTablet hideForDesktop ">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+@endsection
+
 @section('nav_grid')
     @include('layout.product.mb-search', ['menuName' => null])
 @endsection
@@ -43,8 +59,7 @@
                                         }
                                     @endphp
 
-                                    <li class="searchable hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1"
-                                        data-index="{{ $index }}">
+                                    <li class="searchable hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1" data-index="{{ $index }}">
 
                                         <a class="item-101"
                                             href="{{ route('menu.journal.item', ['slug' => $blog->slug]) }}">
@@ -92,6 +107,10 @@
                                     </li>
                                 @endforeach
 
+                                <li class="no_result hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1" style="display:none">
+                                    <h3 class="smaller fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">查無資料</h3>
+                                </li>
+
                             </ul>
                         </div>
 
@@ -123,6 +142,21 @@
                 // beware of css injections!
 
                 $('.input-product-search').val($(this).val());
+
+                if($('.searchable:visible').length==0){
+                    $('.no_result').show();
+                }else{
+                    $('.no_result').hide();
+                }
+            });
+
+            $('.input-product-search').keypress(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    $('.desktopSearchList').hide();
+                    $('nav.sidebar.white.left.visible div.close').trigger('click');
+                    $(".mask").css("display","none");
+                }
             });
 
             var resizeBg = function() {
@@ -140,8 +174,8 @@
                 // 處理 mb 顯示 search 轉換成 pc 事件
                 if($('nav.sidebar.white.left.visible input.input-product-search:visible').length>0){
                     if($('.actionButton.sidebarTrigger.searchButton:visible').length==0){
-                    $('nav.sidebar.white.left.visible div.close').trigger('click');
-                    $('input.input-product-search.desktopSearch:visible').focus();
+                        $('nav.sidebar.white.left.visible div.close').trigger('click');
+                        $('input.input-product-search.desktopSearch:visible').focus();
                     }
                 }
 
@@ -152,7 +186,6 @@
                     $('.actionButton.sidebarTrigger.searchButton:visible').trigger('click');
                     }
                 }
-
 
                 // 處理 showForTablet 跟 showForPhablet 的交界判斷
                 if($('.searchSide.showForTablet:visible').length>0 && $('.searchSide.showForPhablet:visible').length>0){

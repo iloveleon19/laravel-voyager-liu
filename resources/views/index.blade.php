@@ -2,6 +2,22 @@
 
 @section('title', $title )
 
+@section('nav_menu')
+  <!-- 桌面版顯示 -->
+  <nav class="panel top showForDesktop showForTablet hideForPhone hideForPhablet">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+
+  <!-- 手機版顯示，首頁以外的用js加上 bgWhite 這個class -->
+  <nav class="panel top showForPhone showForPhablet hideForTablet hideForDesktop ">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+@endsection
+
 @section('slide')
 
   <!-- one -->

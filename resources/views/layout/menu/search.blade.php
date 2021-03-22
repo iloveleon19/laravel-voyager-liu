@@ -1,16 +1,13 @@
 
 @php
-
     if (Voyager::translatable($items)) {
         $items = $items->load('translations');
     }
-
 @endphp
 
 @foreach ($items as $item)
 
     @php
-
         $originalItem = $item;
         if (Voyager::translatable($item)) {
             $item = $item->translate($options->locale);
@@ -41,10 +38,10 @@
     @endphp
 
     <li class="searchable search_context {{ $isActive }} item-100 padding-left-3 padding-top-1 padding-bottom-1" data-index="{{ $item->title }}">
-        <a href="{{ url($item->link()) }}" target="{{ $item->target }}" style="{{ $styles }}">
-            {!! $icon !!}
+        {{-- <a href="{{ url($item->link()) }}" target="{{ $item->target }}" style="{{ $styles }}">
+            {!! $icon !!} --}}
             <span>{{ $item->title }}</span>
-        </a>
+        {{-- </a> --}}
         @if(!$originalItem->children->isEmpty())
             @include('voyager::menu.default', ['items' => $originalItem->children, 'options' => $options])
         @endif

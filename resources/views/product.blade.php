@@ -6,6 +6,22 @@
 
 @section('title',$title)
 
+@section('nav_menu')
+  <!-- 桌面版顯示 -->
+  <nav class="panel top showForDesktop showForTablet hideForPhone hideForPhablet">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+
+  <!-- 手機版顯示，首頁以外的用js加上 bgWhite 這個class -->
+  <nav class="panel top bgWhite showForPhone showForPhablet hideForTablet hideForDesktop ">
+    <div class="sections">
+      <div class="left"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
+    </div>
+  </nav>
+@endsection
+
 @section('nav_grid')
   @include('layout.product.mb-search', ['menuName'=>'product_search'])
 @endsection
@@ -91,9 +107,13 @@
                 </li>
               @endforeach
 
+              <li class="no_result hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1" style="display:none">
+                <h3 class="smaller fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">查無資料</h3>
+              </li>
+
             </ul>
           </div>
-
+          
         </div>
         <div class="mask opacity"></div>
       </div>
@@ -120,6 +140,21 @@
       searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\" i]) { display: none; }";
       // beware of css injections!
       $('.input-product-search').val($(this).val());
+
+      if($('.searchable:visible').length==0){
+        $('.no_result').show();
+      }else{
+        $('.no_result').hide();
+      }
+    });
+
+    $('.input-product-search').keypress(function (event) {
+      if (event.keyCode == 13) {
+        event.preventDefault();
+        $('.desktopSearchList').hide();
+        $('nav.sidebar.white.left.visible div.close').trigger('click');
+        $(".mask").css("display","none");
+      }
     });
 
 
@@ -187,8 +222,6 @@
     $(".desktopSearch").focus(function(){
       $(".desktopSearchList").css("display","inline");
       $(".mask").css("display","inline");
-      //$(".panel").css("display","none");
-      // $(".input-product-search.desktopSearch").css("background-color","#e3e3e3")
     });
 
     $(".desktopSearch").blur(function(){
@@ -203,12 +236,14 @@
     })
 
     // 調整
-    $("li.search_context").click(function(e){
-      // e.stopPropagation();
-
-      var search_context = $(this).find('a>span').text();
+    $("li.search_context").click(function(event){
+      var search_context = $(this).find('span').text();
       $('.input-product-search').val(search_context);
       $('.input-product-search').trigger('change')
+
+      $('.desktopSearchList').hide();
+      $('nav.sidebar.white.left.visible div.close').trigger('click');
+      $(".mask").css("display","none");
     })
 
   });

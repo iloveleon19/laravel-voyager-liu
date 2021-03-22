@@ -1,3 +1,5 @@
+@import 'mixins';
+
 html,body{ 
   height:100%;
   width: 100%;
@@ -14,7 +16,7 @@ html,body{
 .slides-form input[type=text].input-product-search{
   font-size: 32px;
   border:none;
-  min-width:150px;
+  min-width:250px;
 }
 
 // @media(max-width:769px){
@@ -65,7 +67,7 @@ li.hoverli:hover {
 }
 
 .arrow-White{
-  background-color: rgba(255, 255, 255, 0.4);
+  // background-color: rgba(255, 255, 255, 0.4);
   z-index: 2;
 }
 
@@ -81,6 +83,27 @@ body.slides {
   margin-right: auto;
 }
 .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.img-center {
+  width:100%;
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -136,10 +159,29 @@ body.slides {
   line-height: 22px;
 }
 
-.productcontent p {
+.productcontent div.post-desc a,
+.productcontent div.post-desc p,
+.productcontent div.post-desc td,
+.productcontent div.post-desc th {
   color: rgb(153, 153, 153);
-  line-height: 33px;
-  font-size: 27px;
+  // line-height: 33px;
+  // font-size: 27px;
+}
+
+.productcontent div.post-desc div,
+.productcontent div.post-desc span,
+.productcontent div.post-desc li,
+.productcontent div.post-desc h1,
+.productcontent div.post-desc h2,
+.productcontent div.post-desc h3,
+.productcontent div.post-desc h4,
+.productcontent div.post-desc h5,
+.productcontent div.post-desc h6 {
+  color: rgb(153, 153, 153);
+}
+
+.photography-desc {
+  color: rgb(153, 153, 153);
 }
 
 // .mobileSearch {
@@ -215,7 +257,11 @@ ul.desktopSearchList li a:hover {
   color: #999999;
 }
 
-.opacity { opacity:0.3; filter: alpha(opacity=30); background-color:#a0a0a0; }
+.opacity {
+  opacity:0.3;
+  filter: alpha(opacity=30);
+  background-color:#a0a0a0;
+}
 .mask { 
   height:100%;
   width:100%;
@@ -240,17 +286,14 @@ ul.desktopSearchList li a:hover {
   position: none;
 }
 
-// .bgWhite{
-//   background-color: #fff;
-// }
+.bgWhite{
+  background-color: #fff;
+}
 
 /* For portrait, 直向 */
 @media screen and (orientation: portrait) {
   .bgWhite {
     background-color: #fff;
-  }
-  .level-98{
-    z-index: 98;
   }
 }
 
@@ -260,13 +303,12 @@ ul.desktopSearchList li a:hover {
   .bgWhite {
     background-color: #fff;
   }
-  .level-98{
-    z-index: 98;
-  }
 }
 
+input[type="text"].input-product-search.desktopSearch{
+  background-color:rgba(160,160,160,0);
+}
 
-
-.level-98{
-  z-index: 98;
+input[type="text"].input-product-search:focus{
+  @include inputPlaceholder(#242424, 400, 0.5);
 }
