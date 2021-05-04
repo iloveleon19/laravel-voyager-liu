@@ -8,7 +8,7 @@ use App\Product;
 class ProductItemController extends Controller
 {
     public function index($slug){
-        $title = '劉承鑫建築事務所 - 作品';
+        $title = setting('site.title') . ' - 作品';
         $product = Product::select('products.*')
                         ->where('products.status', '=', '1')
                         ->where('products.slug', '=', $slug)->first();

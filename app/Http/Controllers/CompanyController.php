@@ -10,8 +10,7 @@ use App\Patent;
 class CompanyController extends Controller
 {
     public function index(){
-        //
-        $title = '劉承鑫建築事務所 - 事務所簡介'; // 名稱可以跟menu連動
+        $title = setting('site.title') . ' - 事務所簡介'; // 名稱可以跟menu連動
         $officeIntro = OfficeIntro::find(1);
 
         $partners = null;

@@ -8,7 +8,7 @@ use App\Blog;
 class JournalItemController extends Controller
 {
     public function index($slug){
-        $title = '劉承鑫建築事務所 - 作品';
+        $title = setting('site.title') . ' - 作品';
         $blog = Blog::select('blogs.*')
                         ->where('blogs.status', '=', '1')
                         ->where('blogs.slug', '=', $slug)->first();

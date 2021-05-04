@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $title = '劉承鑫建築事務所';
+        $title = setting('site.title');
         $banners = Banner::select('banners.*')
             ->where('banners.status', '=', '1')->orderByRaw('-`banners`.`order` desc')->orderBy('id', 'asc')->get();
         return view('index', ['banners' => $banners, 'title' => $title]);
