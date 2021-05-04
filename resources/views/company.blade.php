@@ -28,7 +28,7 @@
         <div class="fix-9-12 toCenter">
 
           @if($officeIntro->show_boss_image && $officeIntro->boss)
-            <img class="round margin-bottom-1 ae-1 fromCenter" src="{{ Voyager::image( $officeIntro->boss->photo ) }}" alt="Avatar" width="70" data-action="zoom"/>
+            <img class="round margin-bottom-1 ae-1 fromCenter" src="{{ Voyager::image( $officeIntro->boss->photo ) }}" alt="{{$officeIntro->boss->name}}" width="70" data-action="zoom"/>
           @endif
 
           {{-- <p class="ae-2 large margin-bottom-2"><span class="opacity-8">{{ $officeIntro->title }}</span></p> --}}
@@ -64,8 +64,11 @@
                     <div class="fix-12-12 relative {{$swiper_class}}">
                       <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-{{$k+1}}" data-slider-id="82">
                         @foreach ($image_sets as $j => $image)
+                          @php
+                            $filename = explode(".",basename($image),2);
+                          @endphp
                           <div class="selected swiper-slide ">
-                            <img src="{{ Voyager::image( $image ) }}" style="width: 100%;" class="productImg" alt="iPhone" data-img-id="{{$j}}"/>
+                            <img src="{{ Voyager::image( $image ) }}" style="width: 100%;" class="productImg" alt="{{$filename[0]}}" data-img-id="{{$j}}"/>
                             {{-- style="width: auto;height: 358px;" --}}
                           </div>
                         @endforeach
@@ -167,13 +170,19 @@
                 @endif
                 <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-{{$k+1}}" style="display: inline-block;" >
                   @foreach ($image_sets as $j => $image)
+                    @php
+                      $filename = explode(".",basename($image),2);
+                    @endphp
                     <li class="select-{{$j}}">
-                      <img src="{{ Voyager::image( $image ) }}" alt="Image"/>
+                      <img src="{{ Voyager::image( $image ) }}" alt="{{$filename[0]}}"/>
                     </li>
                   @endforeach
                   @if(isset($j) && $j==0)
+                    @php
+                      $filename = explode(".",basename($image_sets[$j]),2);
+                    @endphp
                     <li>
-                      <img src="{{ Voyager::image( $image_sets[$j] ) }}" alt="Image"/>
+                      <img src="{{ Voyager::image( $image_sets[$j] ) }}" alt="{{$filename[0]}}"/>
                     </li>
                   @endif
                 </ul>

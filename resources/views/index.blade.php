@@ -35,7 +35,7 @@
 
           @foreach ($banners as $banner)
             <li class="selected">
-              <img src="{{ Voyager::image( $banner->image ) }}" class="bgx" alt="Image"/>
+              <img src="{{ Voyager::image( $banner->image ) }}" class="bgx" alt="{{$banner->seo_title}}"/>
             </li>
           @endforeach
 

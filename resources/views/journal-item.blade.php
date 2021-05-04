@@ -39,7 +39,7 @@
                   <div class=" clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-0" data-slider-id="82">
 
                     <div class="selected img-center">
-                      <img src="{{ Voyager::image( $blog->excerpt_image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone"/>
+                      <img src="{{ Voyager::image( $blog->excerpt_image ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$blog->seo_title}}"/>
                     </div>
                   </div>
 
@@ -70,8 +70,11 @@
                 @endphp
 
                 @foreach ($image_sets as $k => $image)
+                  @php
+                    $filename = explode(".",basename($image),2);
+                  @endphp
                   <div class="selected clickable animated margin-bottom-3 ae-1 popupTrigger productImg" data-popup-id="75-1">
-                    <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="iPhone" data-img-id="{{$k}}"/>
+                    <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{ $filename[0] }}" data-img-id="{{$k}}"/>
                   </div>
                 @endforeach
 
@@ -110,10 +113,10 @@
           <div class="relative ae-5">
             <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-0" style="display: inline-block;">
               <li class="selected">
-                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="Image"/>
+                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="{{$blog->seo_title}}"/>
               </li>
               <li>
-                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="Image"/>
+                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="{{$blog->seo_title}}"/>
               </li>
             </ul>
           </div>
@@ -143,14 +146,20 @@
             @endif
             <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-1" style="display: inline-block;">
               @foreach ($image_sets as $k => $image)
-                  <li class="select-{{$k}}">
-                    <img src="{{ Voyager::image( $image ) }}" alt="Image" />
-                  </li>
+                @php
+                  $filename = explode(".",basename($image),2);
+                @endphp
+                <li class="select-{{$k}}">
+                  <img src="{{ Voyager::image( $image ) }}" alt="{{$filename[0]}}" />
+                </li>
               @endforeach
 
               @if(isset($k) && $k==0)
+                @php
+                  $filename = explode(".",basename($image_sets[$k]),2);
+                @endphp
                 <li>
-                  <img src="{{ Voyager::image( $image_sets[$k] ) }}" alt="Image"/>
+                  <img src="{{ Voyager::image( $image_sets[$k] ) }}" alt="{{$filename[0]}}"/>
                 </li>
               @endif
 
