@@ -68,7 +68,7 @@
                             $filename = explode(".",basename($image),2);
                           @endphp
                           <div class="selected swiper-slide ">
-                            <img src="{{ Voyager::image( $image ) }}" style="width: 100%;" class="productImg" alt="{{$filename[0]}}" data-img-id="{{$j}}"/>
+                            <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$filename[0]}}" data-img-id="{{$j}}"/>
                             {{-- style="width: auto;height: 358px;" --}}
                           </div>
                         @endforeach
@@ -177,12 +177,12 @@
                       <img src="{{ Voyager::image( $image ) }}" alt="{{$filename[0]}}"/>
                     </li>
                   @endforeach
-                  @if(isset($j) && $j==0)
+                  @if(count($image_sets)==1)
                     @php
-                      $filename = explode(".",basename($image_sets[$j]),2);
+                      $filename = explode(".",basename($image_sets[0]),2);
                     @endphp
                     <li>
-                      <img src="{{ Voyager::image( $image_sets[$j] ) }}" alt="{{$filename[0]}}"/>
+                      <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename[0]}}"/>
                     </li>
                   @endif
                 </ul>
@@ -221,7 +221,9 @@
   })
 
   $('.popupTrigger.productImg[data-popup-id^="75-"] img.productImg').click(function(){
-    mySwiper.autoplay.stop();
+    if(mySwiper.initialized==true){
+      mySwiper.autoplay.stop();
+    }
 
     var popupId = $(this).closest('.popupTrigger.productImg').data('popup-id');
 
@@ -232,7 +234,9 @@
   })
 
   $('.popup.animated>.close').click(function(){
-    mySwiper.autoplay.start();
+    if(mySwiper.initialized==true){
+      mySwiper.autoplay.start();
+    }
   })
 
 </script>

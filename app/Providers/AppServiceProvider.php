@@ -10,7 +10,10 @@ use App\Banner;
 use App\Product;
 use App\Blog;
 use App\OfficeIntro;
+use App\FormFields\YearFormField;
+use App\FormFields\MonthFormField;
 
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Voyager::addFormField(YearFormField::class);
+        Voyager::addFormField(MonthFormField::class);
     }
 
     /**

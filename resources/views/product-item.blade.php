@@ -128,12 +128,12 @@
                 </li>
               @endforeach
 
-              @if(isset($k) && $k==0)
+              @if(count($image_sets)==1)
                 @php
-                  $filename = explode(".",basename($image_sets[$k]),2);
+                  $filename = explode(".",basename($image_sets[0]),2);
                 @endphp
                 <li>
-                  <img src="{{ Voyager::image( $image_sets[$k] ) }}" alt="{{$filename[0]}}"/>
+                  <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename[0]}}"/>
                 </li>
               @endif
 
@@ -172,7 +172,9 @@
   })
 
   $('.popupTrigger.productImg[data-popup-id="75-1"] img.productImg').click(function(){
-    mySwiper.autoplay.stop();
+    if(mySwiper.initialized==true){
+      mySwiper.autoplay.stop();
+    }
 
     $('ul.slider.popupContent[data-slider-id="75-1"] li').removeClass('selected');
     var id = $(this).data('img-id');
@@ -181,7 +183,9 @@
   })
 
   $('.popup.animated>.close').click(function(){
-    mySwiper.autoplay.start();
+    if(mySwiper.initialized==true){
+      mySwiper.autoplay.start();
+    }
   })
 
   var resizeBg = function() {

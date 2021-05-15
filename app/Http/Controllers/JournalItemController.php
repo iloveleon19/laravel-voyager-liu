@@ -12,6 +12,11 @@ class JournalItemController extends Controller
         $blog = Blog::select('blogs.*')
                         ->where('blogs.status', '=', '1')
                         ->where('blogs.slug', '=', $slug)->first();
+
+        if(empty($blog)){
+            return abort(404);
+        }
+
         return view('journal-item', ['blog' => $blog, 'title'=>$title.'-'.$blog->title]);
     }
 }

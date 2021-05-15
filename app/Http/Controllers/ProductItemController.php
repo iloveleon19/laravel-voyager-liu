@@ -12,6 +12,11 @@ class ProductItemController extends Controller
         $product = Product::select('products.*')
                         ->where('products.status', '=', '1')
                         ->where('products.slug', '=', $slug)->first();
+
+        if(empty($product)){
+            return abort(404);
+        }
+
         return view('product-item', ['product' => $product, 'title'=>$title.'-'.$product->title]);
     }
 }
