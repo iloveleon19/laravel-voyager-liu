@@ -45,10 +45,11 @@
                   <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-1" data-slider-id="82">
                     @foreach ($image_sets as $k => $image)
                       @php
-                        $filename = explode(".",basename($image),2);
+                        $filename = pathinfo($image);
+                        $photoPath = $filename['dirname'].'/'.$filename['filename']."-medium.".$filename['extension'];
                       @endphp
                       <div class="selected {{$slideClass}}">
-                        <img src="{{ Voyager::image( $image ) }}"  class="productImg" alt="{{$filename[0]}}" style="width: auto;height: 358px;" data-img-id="{{$k}}"/>
+                        <img src="{{ Voyager::image( $photoPath ) }}"  class="productImg" alt="{{$filename['filename']}}" style="width: auto;height: 358px;" data-img-id="{{$k}}"/>
                         {{-- style="width: auto;height: 358px;" --}}
                       </div>
                     @endforeach
@@ -121,19 +122,19 @@
             <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-1" style="display: inline-block;" >
               @foreach ($image_sets as $k => $image)
                 @php
-                  $filename = explode(".",basename($image),2);
+                  $filename = pathinfo($image);
                 @endphp
                 <li class="select-{{$k}}">
-                  <img src="{{ Voyager::image( $image ) }}" alt="{{$filename[0]}}" />
+                  <img src="{{ Voyager::image( $image ) }}" alt="{{$filename['filename']}}" />
                 </li>
               @endforeach
 
               @if(count($image_sets)==1)
                 @php
-                  $filename = explode(".",basename($image_sets[0]),2);
+                  $filename = pathinfo($image_sets[0]);
                 @endphp
                 <li>
-                  <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename[0]}}"/>
+                  <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename['filename']}}"/>
                 </li>
               @endif
 

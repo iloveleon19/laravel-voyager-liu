@@ -28,7 +28,11 @@
         <div class="fix-9-12 toCenter">
 
           @if($officeIntro->show_boss_image && $officeIntro->boss)
-            <img class="round margin-bottom-1 ae-1 fromCenter" src="{{ Voyager::image( $officeIntro->boss->photo ) }}" alt="{{$officeIntro->boss->name}}" width="70" data-action="zoom"/>
+            @php
+              $filename = pathinfo($officeIntro->boss->photo);
+              $photoPath = $filename['dirname'].'/'.$filename['filename']."-small.".$filename['extension'];
+            @endphp
+            <img class="round margin-bottom-1 ae-1 fromCenter" src="{{ Voyager::image( $photoPath ) }}" alt="{{$officeIntro->boss->name}}" width="70" data-action="zoom"/>
           @endif
 
           {{-- <p class="ae-2 large margin-bottom-2"><span class="opacity-8">{{ $officeIntro->title }}</span></p> --}}
@@ -65,10 +69,11 @@
                       <div class="clickable animated margin-bottom-2 ae-1 fadeIn swiper-wrapper masonry controller popupTrigger productImg" data-popup-id="75-{{$k+1}}" data-slider-id="82">
                         @foreach ($image_sets as $j => $image)
                           @php
-                            $filename = explode(".",basename($image),2);
+                          $filename = pathinfo($image);
+                          $photoPath = $filename['dirname'].'/'.$filename['filename']."-medium.".$filename['extension'];
                           @endphp
                           <div class="selected swiper-slide ">
-                            <img src="{{ Voyager::image( $image ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$filename[0]}}" data-img-id="{{$j}}"/>
+                            <img src="{{ Voyager::image( $photoPath ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$filename['filename']}}" data-img-id="{{$j}}"/>
                             {{-- style="width: auto;height: 358px;" --}}
                           </div>
                         @endforeach
@@ -104,7 +109,11 @@
                 <li class="col-3-12 ae-3 fromCenter">
 
                   @if($officeIntro->show_partner_image)
-                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $partner->photo ) }}" height="128" width="128" alt="{{$partner->name}}"/>
+                    @php
+                      $filename = pathinfo($partner->photo);
+                      $photoPath = $filename['dirname'].'/'.$filename['filename']."-small.".$filename['extension'];
+                    @endphp
+                    <img class="round margin-bottom-3 margin-top-5" src="{{ Voyager::image( $photoPath ) }}" height="128" width="128" alt="{{$partner->name}}"/>
                   @endif
 
                   <div class="fix-3-12">
@@ -171,18 +180,18 @@
                 <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-{{$k+1}}" style="display: inline-block;" >
                   @foreach ($image_sets as $j => $image)
                     @php
-                      $filename = explode(".",basename($image),2);
+                      $filename = pathinfo($image);
                     @endphp
                     <li class="select-{{$j}}">
-                      <img src="{{ Voyager::image( $image ) }}" alt="{{$filename[0]}}"/>
+                      <img src="{{ Voyager::image( $image ) }}" alt="{{$filename['filename']}}"/>
                     </li>
                   @endforeach
                   @if(count($image_sets)==1)
                     @php
-                      $filename = explode(".",basename($image_sets[0]),2);
+                      $filename = pathinfo($image_sets[0]);
                     @endphp
                     <li>
-                      <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename[0]}}"/>
+                      <img src="{{ Voyager::image( $image_sets[0] ) }}" alt="{{$filename['filename']}}"/>
                     </li>
                   @endif
                 </ul>

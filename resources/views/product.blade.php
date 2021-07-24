@@ -100,7 +100,11 @@
                         </div>
                       </li>
                       <li class="col-6-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-2">
-                        <img src="{{ Voyager::image( $product->excerpt_image ) }}"  alt="{{$product->seo_title}}"/>
+                        @php
+                          $filename = pathinfo($product->excerpt_image);
+                          $photoPath = $filename['dirname'].'/'.$filename['filename']."-medium.".$filename['extension'];
+                        @endphp
+                        <img src="{{ Voyager::image( $photoPath ) }}"  alt="{{$product->seo_title}}"/>
                       </li>
                     </ul>
                   </a>
