@@ -7,7 +7,7 @@ use App\OfficeIntro;
 use App\Member;
 use App\Patent;
 
-class CompanyController extends Controller
+class OfficeIntroController extends Controller
 {
     public function index(){
         $title = setting('site.title') . ' - 事務所簡介'; // 名稱可以跟menu連動
@@ -27,6 +27,6 @@ class CompanyController extends Controller
             })->Where('patents.status',1)->orderByRaw('-`order` desc')->orderBy('id','asc')->get();
         }
 
-        return view('company', ['officeIntro' => $officeIntro, 'partners'=>$partners, 'patents'=>$patents, 'title'=>$title]);
+        return view('officeIntro', ['officeIntro' => $officeIntro, 'partners'=>$partners, 'patents'=>$patents, 'title'=>$title]);
     }
 }

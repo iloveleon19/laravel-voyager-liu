@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index')->name('menu.index');
 
-Route::get('/company', 'CompanyController@index')->name('menu.company');
-
-    Route::get('/journal', function () {
-        return view('journal');
-    })->name('menu.journal');
+Route::get('/officeIntro', 'OfficeIntroController@index')->name('menu.officeIntro');
 
 Route::get('/journal', 'JournalController@index')->name('menu.journal');
 Route::get('/journal-item/{slug}', 'JournalItemController@index')->name('menu.journal.item');

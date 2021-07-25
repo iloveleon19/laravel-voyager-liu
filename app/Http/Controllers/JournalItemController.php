@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Blog;
+use App\Journal;
 
 class JournalItemController extends Controller
 {
     public function index($slug){
         $title = setting('site.title') . ' - 作品';
-        $blog = Blog::select('blogs.*')
-                        ->where('blogs.status', '=', '1')
-                        ->where('blogs.slug', '=', $slug)->first();
+        $journal = Journal::select('journals.*')
+                        ->where('journals.status', '=', '1')
+                        ->where('journals.slug', '=', $slug)->first();
 
-        if(empty($blog)){
+        if(empty($journal)){
             return abort(404);
         }
 
-        return view('journal-item', ['blog' => $blog, 'title'=>$title.'-'.$blog->title]);
+        return view('journal-item', ['journal' => $journal, 'title'=>$title.'-'.$journal->title]);
     }
 }

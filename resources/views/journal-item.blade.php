@@ -40,10 +40,10 @@
 
                     <div class="selected img-center">
                       @php
-                        $filename = pathinfo($blog->excerpt_image);
+                        $filename = pathinfo($journal->excerpt_image);
                         $photoPath = $filename['dirname'].'/'.$filename['filename']."-medium.".$filename['extension'];
                       @endphp
-                      <img src="{{ Voyager::image( $photoPath ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$blog->seo_title}}"/>
+                      <img src="{{ Voyager::image( $photoPath ) }}" style="width: auto;height: 358px;" class="productImg" alt="{{$journal->seo_title}}"/>
                     </div>
                   </div>
 
@@ -51,26 +51,26 @@
                 <div class="fix-12-12 margin-top-1" >
                   <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
                     <h2 class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1 ">
-                      @if ($blog->year)
-                        {{$blog->year}} 年
+                      @if ($journal->year)
+                        {{$journal->year}} 年
                       @endif
 
-                      @if ($blog->month)
-                        {{$blog->month}} 月
+                      @if ($journal->month)
+                        {{$journal->month}} 月
                       @endif
                     </h2>
-                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->title}}</h2>
+                    <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$journal->title}}</h2>
                   </div>
-                  {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
+                  {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$journal->title}}</h1> --}}
                   <div class="ae-6 fromRight left productcontent margin-top-3">
                     <div class="post-desc large margin-bottom-3 opacity-8">
-                      {!! $blog->body !!}
+                      {!! $journal->body !!}
                     </div>
                   </div>
                 </div>
 
                 @php
-                  $image_sets = json_decode($blog->image_sets,true);
+                  $image_sets = json_decode($journal->image_sets,true);
                 @endphp
 
                 @foreach ($image_sets as $k => $image)
@@ -83,15 +83,15 @@
                   </div>
                 @endforeach
 
-                @if($blog->photography)
+                @if($journal->photography)
                   <div class="fix-12-12 margin-top-1 margin-top-tablet-1  margin-top-phablet-1 margin-top-phone-1 photography-desc">
                     <div class="flex left" style="flex-direction: column;word-wrap: break-word;">
                       <h2 class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">攝影</h2>
                     </div>
-                    {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$blog->title}}</h1> --}}
+                    {{-- <h1 class="smaller margin-bottom-2 ae-5 fromLeft left">{{$journal->title}}</h1> --}}
                     <div class="ae-6 fromRight left" >
                       <p class="large margin-bottom-3 opacity-8">
-                        {{ $blog->photography }}
+                        {{ $journal->photography }}
                       </p>
                     </div>
                   </div>
@@ -118,10 +118,10 @@
           <div class="relative ae-5">
             <ul class="slider animated ae-1 fromAbove inlineBlock clickable popupContent disableSelect" data-slider-id="75-0" style="display: inline-block;">
               <li class="selected">
-                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="{{$blog->seo_title}}"/>
+                <img src="{{ Voyager::image( $journal->excerpt_image ) }}" alt="{{$journal->seo_title}}"/>
               </li>
               <li>
-                <img src="{{ Voyager::image( $blog->excerpt_image ) }}" alt="{{$blog->seo_title}}"/>
+                <img src="{{ Voyager::image( $journal->excerpt_image ) }}" alt="{{$journal->seo_title}}"/>
               </li>
             </ul>
           </div>
@@ -141,7 +141,7 @@
           <div class="relative ae-5">
 
             @php
-              $image_sets = json_decode($blog->image_sets,true);
+              $image_sets = json_decode($journal->image_sets,true);
               $swiper_class = count($image_sets)==1 ? "" : "swiper-container";
             @endphp
 

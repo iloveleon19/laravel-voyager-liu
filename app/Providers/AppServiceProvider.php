@@ -4,11 +4,11 @@ namespace App\Providers;
 
 use App\Observers\BannerObserver;
 use App\Observers\ProductObserver;
-use App\Observers\BlogObserver;
+use App\Observers\JournalObserver;
 use App\Observers\OfficeIntroObserver;
 use App\Banner;
 use App\Product;
-use App\Blog;
+use App\Journal;
 use App\OfficeIntro;
 use App\FormFields\YearFormField;
 use App\FormFields\MonthFormField;
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Banner::observe(BannerObserver::class);
         Product::observe(ProductObserver::class);
-        Blog::observe(BlogObserver::class);
+        Journal::observe(JournalObserver::class);
         OfficeIntro::observe(OfficeIntroObserver::class);
     }
 }

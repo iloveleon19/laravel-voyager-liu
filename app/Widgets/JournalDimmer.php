@@ -2,13 +2,13 @@
 
 namespace App\Widgets;
 
-use App\Blog;
+use App\Journal;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Widgets\BaseDimmer;
 use Illuminate\Support\Facades\Auth;
 
-class BlogDimmer extends BaseDimmer
+class JournalDimmer extends BaseDimmer
 {
     /**
      * The configuration array.
@@ -23,16 +23,16 @@ class BlogDimmer extends BaseDimmer
      */
     public function run()
     {
-        $count = Blog::count();
-        $string = trans_choice('voyager::dimmer.blog', $count);
+        $count = Journal::count();
+        $string = trans_choice('voyager::dimmer.journal', $count);
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-logbook',
             'title'  => "{$count} {$string}",
-            'text'   => __('voyager::dimmer.blog_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'text'   => __('voyager::dimmer.journal_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => __('voyager::dimmer.blog_link_text'),
-                'link' => route('voyager.blogs.index'),
+                'text' => __('voyager::dimmer.journal_link_text'),
+                'link' => route('voyager.journals.index'),
             ],
             'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
         ]));
@@ -46,6 +46,6 @@ class BlogDimmer extends BaseDimmer
     public function shouldBeDisplayed()
     {
         return true;
-        return Auth::user()->can('browse', app(Blog::class));
+        return Auth::user()->can('browse', app(Journal::class));
     }
 }

@@ -43,18 +43,18 @@
                         <div class="col-4-12 col-tablet-3-5 col-phablet-1-1 col-phone-1-1">
                             <ul class="flex equal equalMobile margin-1">
 
-                                @foreach ($blogs as $blog)
+                                @foreach ($journals as $journal)
                                     @php
-                                        $index = $blog->slug . "\n";
-                                        $index .= $blog->title . "\n";
-                                        $index .= $blog->seo_title . "\n";
-                                        $index .= $blog->meta_description . "\n";
-                                        $index .= $blog->meta_keywords . "\n";
+                                        $index = $journal->slug . "\n";
+                                        $index .= $journal->title . "\n";
+                                        $index .= $journal->seo_title . "\n";
+                                        $index .= $journal->meta_description . "\n";
+                                        $index .= $journal->meta_keywords . "\n";
                                         
-                                        if (!empty($blog->year)) {
-                                            $index .= $blog->year . ' 年 ';
-                                            if (!empty($blog->month)) {
-                                                $index .= $blog->month . " 月\n";
+                                        if (!empty($journal->year)) {
+                                            $index .= $journal->year . ' 年 ';
+                                            if (!empty($journal->month)) {
+                                                $index .= $journal->month . " 月\n";
                                             }
                                         }
                                     @endphp
@@ -62,7 +62,7 @@
                                     <li class="searchable hoverli col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1" data-index="{{ $index }}">
 
                                         <a class="item-101"
-                                            href="{{ route('menu.journal.item', ['slug' => $blog->slug]) }}">
+                                            href="{{ route('menu.journal.item', ['slug' => $journal->slug]) }}">
 
                                             <ul class="flex later reverse">
 
@@ -77,21 +77,21 @@
                                                 <li class="col-12-12 col-tablet-1-2 col-phablet-1-2 col-phone-1-1 left">
                                                     <div class="flex" style="flex-direction: column;word-wrap: break-word;">
                                                         {{-- <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                            {{$blog->categories->implode('name',',')}}
+                            {{$journal->categories->implode('name',',')}}
                           </div> --}}
-                                                        {{-- <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$blog->location}}</div> --}}
+                                                        {{-- <div class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">{{$journal->location}}</div> --}}
                                                         <h3
                                                             class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                                                            @if ($blog->year)
-                                                                {{ $blog->year }} 年
-                                                                @if ($blog->month)
-                                                                    {{ $blog->month }} 月
+                                                            @if ($journal->year)
+                                                                {{ $journal->year }} 年
+                                                                @if ($journal->month)
+                                                                    {{ $journal->month }} 月
                                                                 @endif
                                                             @endif
                                                         </h3>
                                                         <h3
                                                             class="smaller margin-bottom-2 fromLeft col-12-12  col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
-                                                            {{ $blog->title }}</h3>
+                                                            {{ $journal->title }}</h3>
                                                         <div
                                                             class="opacity-8 col-12-12 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
                                                             繼續閱讀
@@ -100,11 +100,11 @@
                                                 </li>
                                                 <li class="col-1-1 col-tablet-1-1 col-phablet-1-1 col-phone-1-1">
                                                     @php
-                                                        $filename = pathinfo($blog->excerpt_image);
+                                                        $filename = pathinfo($journal->excerpt_image);
                                                         $photoPath = $filename['dirname'].'/'.$filename['filename']."-medium.".$filename['extension'];
                                                     @endphp
                                                     <img src="{{ Voyager::image($photoPath) }}"
-                                                        alt="{{ $blog->seo_title }}" />
+                                                        alt="{{ $journal->seo_title }}" />
                                                 </li>
                                             </ul>
                                         </a>
