@@ -312,3 +312,15 @@ input[type="text"].input-product-search.desktopSearch{
 input[type="text"].input-product-search:focus{
   @include inputPlaceholder(#242424, 400, 0.5);
 }
+
+.button.actionButton.customLogo {
+  position: relative;
+  background-color:transparent;
+}
+
+.customLogo > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

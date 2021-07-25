@@ -279,3 +279,15 @@ input[type=text].input-product-search:focus:-ms-input-placeholder {
   opacity: 0.5;
 }
 
+.button.actionButton.customLogo {
+  position: relative;
+  background-color: transparent;
+}
+
+.customLogo > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

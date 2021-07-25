@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
   @yield('meta_seo')
 
+  <link rel="shortcut icon" type="image/x-icon" href="{{Voyager::image( setting('site.logo') )}}" />
   <link href="{{mix('/css/slides.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/swiper.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
@@ -96,7 +97,7 @@
     <nav class="sidebar white left col-12-12" data-sidebar-id="1">
       <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
       <div class="content">
-        <a href="{{ route('menu.index') }}" class="logo"><svg width="100" height="30"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg></a>
+        <a href="{{ route('menu.index') }}" class="logo"><img height="30" src="{{Voyager::image( setting('site.logo') )}}" alt="{{setting('site.title')}}"></a>
 
         {{-- MENU 選單 --}}
         <ul class="mainMenu margin-top-3 big">
